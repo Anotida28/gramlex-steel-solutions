@@ -26,7 +26,8 @@ export default {
 				foreground: 'hsl(var(--foreground))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
+					foreground: 'hsl(var(--primary-foreground))',
+					glow: 'hsl(var(--primary-glow))'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
@@ -52,6 +53,17 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				steel: {
+					light: 'hsl(var(--steel-light))',
+					medium: 'hsl(var(--steel-medium))',
+					dark: 'hsl(var(--steel-dark))'
+				},
+				construction: {
+					orange: 'hsl(var(--construction-orange))'
+				},
+				industrial: {
+					blue: 'hsl(var(--industrial-blue))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -67,6 +79,20 @@ export default {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-steel': 'var(--gradient-steel)',
+				'gradient-hero': 'var(--gradient-hero)',
+			},
+			boxShadow: {
+				'industrial': 'var(--shadow-industrial)',
+				'card': 'var(--shadow-card)',
+				'primary': 'var(--shadow-primary)',
+			},
+			transitionTimingFunction: {
+				'smooth': 'var(--transition-smooth)',
+				'steel': 'var(--transition-steel)',
 			},
 			keyframes: {
 				'accordion-down': {
