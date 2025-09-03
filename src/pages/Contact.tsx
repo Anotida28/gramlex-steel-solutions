@@ -61,16 +61,16 @@ const Contact = () => {
     {
       icon: MessageCircle,
       title: "WhatsApp",
-      primary: "+263 71 523 4905",
+      primary: "+263712411400",
       secondary: "24/7 Support Available",
       action: "https://wa.me/263715234905"
     },
     {
       icon: Mail,
       title: "Email Us",
-      primary: "dbuild637@gmail.com",
+      primary: "gramlex.investments@gmail.com",
       secondary: "Response within 24 hours",
-      action: "mailto:dbuild637@gmail.com"
+      action: "mailto:gramlex.investments@gmail.com"
     },
     {
       icon: MapPin,
@@ -269,7 +269,7 @@ const Contact = () => {
                       <h4 className="font-semibold mb-1">Phone Numbers</h4>
                       <p className="text-muted-foreground">
                         Main: +263 77 241 1400<br />
-                        WhatsApp: +263 71 523 4905
+                        WhatsApp: +263712411400
                       </p>
                     </div>
                   </div>
@@ -278,7 +278,7 @@ const Contact = () => {
                     <Mail className="h-6 w-6 text-primary mt-1" />
                     <div>
                       <h4 className="font-semibold mb-1">Email</h4>
-                      <p className="text-muted-foreground">dbuild637@gmail.com</p>
+                      <p className="text-muted-foreground">gramlex.investments@gmail.com</p>
                     </div>
                   </div>
                 </CardContent>

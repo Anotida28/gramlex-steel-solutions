@@ -31,7 +31,7 @@ const Navigation = () => {
             </div>
             <div className="flex items-center space-x-2">
               <Mail className="h-4 w-4" />
-              <span>dbuild637@gmail.com</span>
+              <span>gramlex.investments@gmail.com</span>
             </div>
           </div>
           <div className="text-xs">
