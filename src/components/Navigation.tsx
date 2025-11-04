@@ -1,29 +1,32 @@
+"use client";
+
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone, Mail } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import gramlexLogo from "@/assets/gramlex-logo.png";
 
-const Navigation = () => {
+const navItems = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Services", path: "/services" },
+  { name: "Projects", path: "/projects" },
+  { name: "Contact", path: "/contact" },
+];
+
+export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
-  const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Services", path: "/services" },
-    { name: "Projects", path: "/projects" },
-    { name: "Contact", path: "/contact" },
-  ];
-
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => pathname === path;
 
   return (
-    <header className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0 z-50 shadow-card">
+    <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-md shadow-card">
       <div className="container mx-auto px-4">
-        {/* Top Bar */}
-        <div className="hidden md:flex items-center justify-between py-2 text-sm text-muted-foreground border-b border-border/50">
+        <div className="hidden items-center justify-between border-b border-border/50 py-2 text-sm text-muted-foreground md:flex">
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-2">
               <Phone className="h-4 w-4" />
@@ -34,27 +37,30 @@ const Navigation = () => {
               <span>gramlex.investments@gmail.com</span>
             </div>
           </div>
-          <div className="text-xs">
-            6506 Shamrock Park, Gweru, Zimbabwe
-          </div>
+          <div className="text-xs">6506 Shamrock Park, Gweru, Zimbabwe</div>
         </div>
 
-        {/* Main Navigation */}
         <div className="flex items-center justify-between py-4">
-          <Link to="/" className="flex items-center space-x-3">
-            <img src={gramlexLogo} alt="Gramlex Investments" className="h-12 w-auto" />
+          <Link href="/" className="flex items-center space-x-3" aria-label="Gramlex Investments home">
+            <Image
+              src="/images/gramlex-logo.png"
+              alt="Gramlex Investments"
+              width={48}
+              height={48}
+              className="h-12 w-auto"
+              priority
+            />
             <div className="hidden sm:block">
-              <h1 className="font-bold text-xl text-foreground">Gramlex Investments</h1>
-              <p className="text-xs text-muted-foreground">Steel & General Hardware</p>
+              <p className="text-xl font-bold text-foreground">Gramlex Investments</p>
+              <p className="text-xs text-muted-foreground">Steel &amp; General Hardware</p>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden items-center space-x-8 lg:flex">
             {navItems.map((item) => (
               <Link
                 key={item.name}
-                to={item.path}
+                href={item.path}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary",
                   isActive(item.path) ? "text-primary" : "text-foreground/80"
@@ -69,27 +75,26 @@ const Navigation = () => {
             <Button variant="hero" size="sm" className="hidden md:inline-flex">
               Request Quote
             </Button>
-
-            {/* Mobile Menu Button */}
             <Button
               variant="ghost"
               size="sm"
               className="lg:hidden"
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => setIsOpen((prev) => !prev)}
+              aria-expanded={isOpen}
+              aria-label="Toggle navigation menu"
             >
               {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="lg:hidden py-4 border-t border-border/50">
+        {isOpen ? (
+          <div className="border-t border-border/50 py-4 lg:hidden">
             <nav className="space-y-4">
               {navItems.map((item) => (
                 <Link
                   key={item.name}
-                  to={item.path}
+                  href={item.path}
                   className={cn(
                     "block py-2 text-sm font-medium transition-colors",
                     isActive(item.path) ? "text-primary" : "text-foreground/80"
@@ -99,15 +104,13 @@ const Navigation = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button variant="hero" size="sm" className="w-full mt-4">
+              <Button variant="hero" size="sm" className="mt-4 w-full">
                 Request Quote
               </Button>
             </nav>
           </div>
-        )}
+        ) : null}
       </div>
     </header>
   );
-};
-
-export default Navigation;
+}
