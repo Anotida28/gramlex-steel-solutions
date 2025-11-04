@@ -1,7 +1,9 @@
 import { Building, Pickaxe, Construction, Factory, Calendar, MapPin, Users, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Seo from "@/components/Seo";
 import projectShowcase from "@/assets/project-showcase.jpg";
 
 const Projects = () => {
@@ -80,11 +82,23 @@ const Projects = () => {
 
   return (
     <div className="min-h-screen">
+      <Seo
+        title="Project Portfolio"
+        description="Review flagship Gramlex Investments projects spanning healthcare, mining, civil infrastructure, and industrial developments across Zimbabwe."
+      />
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-steel">
-        <div className="container mx-auto px-4">
+      <section className="relative overflow-hidden py-20 bg-gradient-steel">
+        <div className="absolute inset-0 bg-steel-grid opacity-15"></div>
+        <div className="absolute -top-24 right-[-10%] h-72 w-72 rounded-full bg-primary/25 blur-[120px] pointer-events-none"></div>
+        <div className="absolute -bottom-32 left-[-15%] h-96 w-96 rounded-full bg-industrial-blue/35 blur-[160px] opacity-70 pointer-events-none"></div>
+        <div className="relative container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="outline" className="mb-4">Our Projects</Badge>
+            <Badge
+              variant="outline"
+              className="accent-pill mb-4 inline-flex items-center border border-primary/30 bg-primary/10 px-4 py-2 text-primary font-semibold backdrop-blur"
+            >
+              Our Projects
+            </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Building Zimbabwe's
               <span className="block text-primary">Infrastructure Legacy</span>
@@ -115,7 +129,9 @@ const Projects = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4">Featured Projects</Badge>
+            <Badge variant="outline" className="accent-pill mb-4 inline-flex items-center border border-primary/20 bg-primary/5 px-4 py-2 text-primary font-semibold">
+              Featured Projects
+            </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Recent Success Stories</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Discover some of our most recent and impactful projects that demonstrate 
@@ -179,7 +195,9 @@ const Projects = () => {
       <section className="py-20 bg-steel-light">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <Badge variant="outline" className="mb-4">Project Portfolio</Badge>
+            <Badge variant="outline" className="accent-pill mb-4 inline-flex items-center border border-primary/20 bg-primary/5 px-4 py-2 text-primary font-semibold">
+              Project Portfolio
+            </Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Diverse Project Experience</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Our extensive portfolio spans multiple sectors, demonstrating our versatility 
@@ -230,9 +248,11 @@ const Projects = () => {
                 ))}
               </div>
 
-              <Button variant="default" size="lg">
-                View All Projects
-                <ArrowRight className="ml-2 h-5 w-5" />
+              <Button variant="default" size="lg" asChild>
+                <a href="mailto:gramlex.investments@gmail.com?subject=Project%20Portfolio%20Request">
+                  View All Projects
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </a>
               </Button>
             </div>
 
@@ -281,8 +301,10 @@ const Projects = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-hero text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
+      <section className="relative overflow-hidden py-20 bg-gradient-hero text-primary-foreground">
+        <div className="absolute inset-0 bg-steel-grid opacity-15 mix-blend-soft-light"></div>
+        <div className="absolute top-0 left-1/2 h-[420px] w-[420px] -translate-x-1/2 bg-white/10 blur-[190px]"></div>
+        <div className="relative container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Start Your Next Project
           </h2>
@@ -291,12 +313,26 @@ const Projects = () => {
             your steel reinforcement requirements and project timeline.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="hero" className="bg-primary-foreground text-steel-dark hover:bg-primary-foreground/90">
-              Discuss Your Project
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button
+              size="lg"
+              variant="hero"
+              className="bg-primary-foreground text-steel-dark hover:bg-primary-foreground/90"
+              asChild
+            >
+              <Link to="/contact">
+                Discuss Your Project
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-steel-dark">
-              Request Portfolio
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-steel-dark"
+              asChild
+            >
+              <a href="mailto:gramlex.investments@gmail.com?subject=Portfolio%20Request">
+                Request Portfolio
+              </a>
             </Button>
           </div>
         </div>

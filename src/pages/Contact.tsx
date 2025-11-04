@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import Seo from "@/components/Seo";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -90,11 +91,23 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen">
+      <Seo
+        title="Contact Gramlex Investments"
+        description="Reach Gramlex Investments for steel reinforcement quotes, technical support, and nationwide logistics. Call, WhatsApp, email, or submit our project inquiry form."
+      />
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-steel">
-        <div className="container mx-auto px-4">
+      <section className="relative overflow-hidden py-20 bg-gradient-steel">
+        <div className="absolute inset-0 bg-steel-grid opacity-15"></div>
+        <div className="absolute -top-24 right-[-10%] h-72 w-72 rounded-full bg-primary/25 blur-[120px] pointer-events-none"></div>
+        <div className="absolute -bottom-32 left-[-15%] h-96 w-96 rounded-full bg-industrial-blue/35 blur-[160px] opacity-70 pointer-events-none"></div>
+        <div className="relative container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="outline" className="mb-4">Contact Us</Badge>
+            <Badge
+              variant="outline"
+              className="accent-pill mb-4 inline-flex items-center border border-primary/30 bg-primary/10 px-4 py-2 text-primary font-semibold backdrop-blur"
+            >
+              Contact Us
+            </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Get in Touch with
               <span className="block text-primary">Our Expert Team</span>
@@ -110,28 +123,35 @@ const Contact = () => {
       {/* Contact Methods */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-            {contactInfo.map((contact, index) => (
-              <Card key={index} className="border-none shadow-card text-center hover:shadow-industrial transition-all duration-300 group">
-                <CardHeader>
-                  <div className="mx-auto mb-4 h-16 w-16 bg-gradient-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <contact.icon className="h-8 w-8 text-primary-foreground" />
-                  </div>
-                  <CardTitle className="text-lg mb-2">{contact.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="font-semibold text-foreground mb-1">{contact.primary}</p>
-                  <p className="text-sm text-muted-foreground mb-4">{contact.secondary}</p>
-                  <Button 
-                    variant="outline" 
-                    size="sm"
-                    onClick={() => window.open(contact.action, contact.action.startsWith('http') ? '_blank' : '_self')}
-                  >
-                    Contact Now
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="section-shell bg-steel-light/70 bg-steel-grid p-6 sm:p-8 lg:p-10 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+              {contactInfo.map((contact, index) => (
+                <Card
+                  key={index}
+                  className="surface-glass border-none shadow-card text-center transition-all duration-300 group surface-glow hover:-translate-y-1 hover:shadow-industrial"
+                >
+                  <CardHeader>
+                    <div className="mx-auto mb-4 h-16 w-16 bg-gradient-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <contact.icon className="h-8 w-8 text-primary-foreground" />
+                    </div>
+                    <CardTitle className="text-lg mb-2">{contact.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="font-semibold text-foreground mb-1">{contact.primary}</p>
+                    <p className="text-sm text-muted-foreground mb-4">{contact.secondary}</p>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() =>
+                        window.open(contact.action, contact.action.startsWith("http") ? "_blank" : "_self")
+                      }
+                    >
+                      Contact Now
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>

@@ -1,8 +1,11 @@
 import { ArrowRight, Shield, Clock, CheckCircle, Building, Truck, Settings, Users } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Seo from "@/components/Seo";
 import heroImage from "@/assets/hero-construction.jpg";
+import StaggerList from "@/lib/motion";
 
 const Home = () => {
   const services = [
@@ -40,7 +43,11 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-industrial-radial">
+      <Seo
+        title="Steel Reinforcement Solutions for Zimbabwe"
+        description="Discover end-to-end steel reinforcement supply, cutting, bending, and logistics services from Gramlex Investments—trusted by construction, civil, and mining partners across Zimbabwe."
+      />
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div 
@@ -48,10 +55,16 @@ const Home = () => {
           style={{ backgroundImage: `url(${heroImage})` }}
         >
           <div className="absolute inset-0 bg-gradient-hero opacity-85"></div>
+          <div className="absolute inset-0 hidden bg-steel-grid opacity-25 mix-blend-soft-light lg:block"></div>
         </div>
+        <div className="absolute -top-24 right-[-10%] h-72 w-72 rounded-full bg-primary/25 blur-[130px] pointer-events-none"></div>
+        <div className="absolute -bottom-32 left-[-15%] h-96 w-96 rounded-full bg-industrial-blue/40 blur-[150px] opacity-70 pointer-events-none"></div>
         
         <div className="relative z-10 container mx-auto px-4 text-center text-primary-foreground">
-          <Badge variant="secondary" className="mb-6 bg-primary-foreground/10 text-primary-foreground border-primary-foreground/20">
+          <Badge
+            variant="secondary"
+            className="accent-pill mb-6 inline-flex items-center gap-2 border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-2 text-primary-foreground/90 backdrop-blur"
+          >
             Leading Steel Solutions Provider
           </Badge>
           
@@ -67,27 +80,48 @@ const Home = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" variant="hero" className="text-lg px-8 py-6">
-              Request a Quote
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button size="lg" variant="hero" className="text-lg px-8 py-6" asChild>
+              <Link to="/contact">
+                Request a Quote
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-steel-dark">
-              Our Services
+            <Button
+              size="lg"
+              variant="outline"
+              className="text-lg px-8 py-6 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-steel-dark"
+              asChild
+            >
+              <Link to="/services">Our Services</Link>
             </Button>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-steel-light">
+      <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <h3 className="text-3xl md:text-4xl font-bold text-primary mb-2">{stat.number}</h3>
-                <p className="text-muted-foreground font-medium">{stat.label}</p>
-              </div>
-            ))}
+          <div className="section-shell bg-steel-light/70 bg-steel-grid p-6 sm:p-8 lg:p-10">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              <StaggerList delay={40}>
+                {stats.map((stat, index) => (
+                  <Card
+                    key={index}
+                    className="surface-glass surface-glow transition-transform duration-300 hover:-translate-y-1"
+                  >
+                    <CardContent className="flex flex-col items-center gap-4 py-8 text-center">
+                      <span className="text-3xl md:text-4xl font-bold text-primary drop-shadow-sm">
+                        {stat.number}
+                      </span>
+                      <div className="h-px w-12 bg-gradient-to-r from-transparent via-primary/40 to-transparent"></div>
+                      <p className="text-sm font-medium uppercase tracking-[0.18em] text-muted-foreground">
+                        {stat.label}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </StaggerList>
+            </div>
           </div>
         </div>
       </section>
@@ -107,19 +141,21 @@ const Home = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <Card key={index} className="border-none shadow-card hover:shadow-industrial transition-all duration-300 group">
-                <CardHeader className="text-center pb-4">
-                  <div className="mx-auto mb-4 h-16 w-16 bg-gradient-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <service.icon className="h-8 w-8 text-primary-foreground" />
-                  </div>
-                  <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
-                  <CardDescription className="text-base leading-relaxed">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            ))}
+            <StaggerList delay={50}>
+              {services.map((service, index) => (
+                <Card key={index} className="border-none shadow-card hover:shadow-industrial transition-all duration-300 group">
+                  <CardHeader className="text-center pb-4">
+                    <div className="mx-auto mb-4 h-16 w-16 bg-gradient-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <service.icon className="h-8 w-8 text-primary-foreground" />
+                    </div>
+                    <CardTitle className="text-xl mb-2">{service.title}</CardTitle>
+                    <CardDescription className="text-base leading-relaxed">
+                      {service.description}
+                    </CardDescription>
+                  </CardHeader>
+                </Card>
+              ))}
+            </StaggerList>
           </div>
         </div>
       </section>
@@ -148,9 +184,11 @@ const Home = () => {
                 ))}
               </div>
 
-              <Button variant="default" size="lg">
-                Learn More About Us
-                <ArrowRight className="ml-2 h-5 w-5" />
+              <Button variant="default" size="lg" asChild>
+                <Link to="/about">
+                  Learn More About Us
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
               </Button>
             </div>
 
@@ -199,8 +237,10 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-hero text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
+      <section className="relative overflow-hidden py-20 bg-gradient-hero text-primary-foreground">
+        <div className="absolute inset-0 bg-steel-grid opacity-20 mix-blend-soft-light"></div>
+        <div className="absolute top-0 left-1/2 h-[420px] w-[420px] -translate-x-1/2 bg-white/10 blur-[200px]"></div>
+        <div className="relative z-10 container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Ready to Start Your Project?
           </h2>
@@ -209,12 +249,24 @@ const Home = () => {
             for your steel reinforcement needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="hero" className="bg-primary-foreground text-steel-dark hover:bg-primary-foreground/90">
-              Contact Us Today
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button
+              size="lg"
+              variant="hero"
+              className="bg-primary-foreground text-steel-dark hover:bg-primary-foreground/90"
+              asChild
+            >
+              <Link to="/contact">
+                Contact Us Today
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
             </Button>
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-steel-dark">
-              Call +263 77 241 1400
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-steel-dark"
+              asChild
+            >
+              <a href="tel:+263772411400">Call +263 77 241 1400</a>
             </Button>
           </div>
         </div>

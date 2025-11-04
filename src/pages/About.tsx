@@ -1,7 +1,9 @@
 import { Award, Target, Eye, Heart, Users, CheckCircle, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import Seo from "@/components/Seo";
 
 const About = () => {
   const values = [
@@ -55,11 +57,23 @@ const About = () => {
 
   return (
     <div className="min-h-screen">
+      <Seo
+        title="About Gramlex Investments"
+        description="Learn about Gramlex Investments' mission, vision, and leadership delivering premium steel reinforcement services throughout Zimbabwe since 2008."
+      />
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-steel">
-        <div className="container mx-auto px-4">
+      <section className="relative overflow-hidden py-20 bg-gradient-steel">
+        <div className="absolute inset-0 bg-steel-grid opacity-15"></div>
+        <div className="absolute -top-24 right-[-10%] h-72 w-72 rounded-full bg-primary/25 blur-[120px] pointer-events-none"></div>
+        <div className="absolute -bottom-32 left-[-15%] h-96 w-96 rounded-full bg-industrial-blue/30 blur-[160px] opacity-70 pointer-events-none"></div>
+        <div className="relative container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
-            <Badge variant="outline" className="mb-4">About Gramlex Investments</Badge>
+            <Badge
+              variant="outline"
+              className="accent-pill mb-4 inline-flex items-center border border-primary/30 bg-primary/10 px-4 py-2 text-primary font-semibold backdrop-blur"
+            >
+              About Gramlex Investments
+            </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
               Building Zimbabwe's Infrastructure
               <span className="block text-primary">Since 2008</span>
@@ -211,17 +225,21 @@ const About = () => {
             <p className="text-lg text-muted-foreground mb-6">
               Interested in joining our team? We're always looking for talented individuals.
             </p>
-            <Button variant="default" size="lg">
-              Career Opportunities
-              <ArrowRight className="ml-2 h-5 w-5" />
+            <Button variant="default" size="lg" asChild>
+              <a href="mailto:gramlex.investments@gmail.com?subject=Career%20Opportunities%20Inquiry">
+                Career Opportunities
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
             </Button>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-hero text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
+      <section className="relative overflow-hidden py-20 bg-gradient-hero text-primary-foreground">
+        <div className="absolute inset-0 bg-steel-grid opacity-15 mix-blend-soft-light"></div>
+        <div className="absolute top-0 left-1/2 h-[420px] w-[420px] -translate-x-1/2 bg-white/10 blur-[190px]"></div>
+        <div className="relative container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Partner with Experience
           </h2>
@@ -229,9 +247,16 @@ const About = () => {
             With our proven track record and commitment to excellence, Gramlex Investments 
             is your trusted partner for all steel reinforcement needs.
           </p>
-          <Button size="lg" variant="hero" className="bg-primary-foreground text-steel-dark hover:bg-primary-foreground/90">
-            Start Your Project
-            <ArrowRight className="ml-2 h-5 w-5" />
+          <Button
+            size="lg"
+            variant="hero"
+            className="bg-primary-foreground text-steel-dark hover:bg-primary-foreground/90"
+            asChild
+          >
+            <Link to="/contact">
+              Start Your Project
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
           </Button>
         </div>
       </section>

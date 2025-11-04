@@ -7,19 +7,19 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-steel-dark text-primary-foreground">
+    <footer className="bg-steel-dark text-primary-foreground" role="contentinfo" aria-label="Footer">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
-              <img src={gramlexLogo} alt="Gramlex Investments" className="h-12 w-auto brightness-0 invert" />
+              <img src={gramlexLogo} alt="Gramlex Investments" className="h-12 w-auto brightness-0 invert" loading="lazy" decoding="async" />
               <div>
                 <h3 className="font-bold text-lg">Gramlex Investments</h3>
-                <p className="text-sm text-primary-foreground/80">Steel & General Hardware</p>
+                <p className="text-sm text-primary-foreground/90">Steel & General Hardware</p>
               </div>
             </div>
-            <p className="text-sm text-primary-foreground/80 leading-relaxed">
+            <p className="text-sm text-primary-foreground/90 leading-relaxed">
               Leading provider of steel reinforcement solutions for construction, civil, mining, and engineering sectors in Zimbabwe.
             </p>
           </div>
@@ -53,20 +53,20 @@ const Footer = () => {
           {/* Services */}
           <div className="space-y-4">
             <h4 className="font-semibold text-lg mb-4">Our Services</h4>
-            <ul className="space-y-2 text-sm">
-              <li className="text-primary-foreground/80 hover:text-primary-glow transition-colors cursor-pointer">
+            <ul className="space-y-2 text-sm" aria-label="Our services">
+              <li className="text-primary-foreground/90 hover:text-primary-glow transition-colors cursor-pointer">
                 Steel Supply & Distribution
               </li>
-              <li className="text-primary-foreground/80 hover:text-primary-glow transition-colors cursor-pointer">
+              <li className="text-primary-foreground/90 hover:text-primary-glow transition-colors cursor-pointer">
                 Cutting & Bending Services
               </li>
-              <li className="text-primary-foreground/80 hover:text-primary-glow transition-colors cursor-pointer">
+              <li className="text-primary-foreground/90 hover:text-primary-glow transition-colors cursor-pointer">
                 Delivery & Positioning
               </li>
-              <li className="text-primary-foreground/80 hover:text-primary-glow transition-colors cursor-pointer">
+              <li className="text-primary-foreground/90 hover:text-primary-glow transition-colors cursor-pointer">
                 Construction Support
               </li>
-              <li className="text-primary-foreground/80 hover:text-primary-glow transition-colors cursor-pointer">
+              <li className="text-primary-foreground/90 hover:text-primary-glow transition-colors cursor-pointer">
                 Mining Solutions
               </li>
             </ul>
@@ -89,14 +89,20 @@ const Footer = () => {
             <div className="pt-4">
               <h5 className="font-medium mb-3">Follow Us</h5>
               <div className="flex space-x-3">
-                <Button variant="ghost" size="icon" className="h-8 w-8 text-primary-foreground/80 hover:text-primary-glow hover:bg-primary-glow/10">
-                  <Facebook className="h-4 w-4" />
+                <Button variant="ghost" size="icon" className="h-8 w-8 text-primary-foreground/90 hover:text-primary-glow hover:bg-primary-glow/10 rounded-md focus-visible:ring-4 focus-visible:ring-primary/40" asChild>
+                  <a href="#" aria-label="Gramlex on Facebook" role="listitem">
+                    <Facebook className="h-4 w-4" />
+                  </a>
                 </Button>
-                <Button variant="ghost" size="icon" className="h-8 w-8 text-primary-foreground/80 hover:text-primary-glow hover:bg-primary-glow/10">
-                  <Twitter className="h-4 w-4" />
+                <Button variant="ghost" size="icon" className="h-8 w-8 text-primary-foreground/90 hover:text-primary-glow hover:bg-primary-glow/10 rounded-md focus-visible:ring-4 focus-visible:ring-primary/40" asChild>
+                  <a href="#" aria-label="Gramlex on Twitter" role="listitem">
+                    <Twitter className="h-4 w-4" />
+                  </a>
                 </Button>
-                <Button variant="ghost" size="icon" className="h-8 w-8 text-primary-foreground/80 hover:text-primary-glow hover:bg-primary-glow/10">
-                  <Linkedin className="h-4 w-4" />
+                <Button variant="ghost" size="icon" className="h-8 w-8 text-primary-foreground/90 hover:text-primary-glow hover:bg-primary-glow/10 rounded-md focus-visible:ring-4 focus-visible:ring-primary/40" asChild>
+                  <a href="#" aria-label="Gramlex on LinkedIn" role="listitem">
+                    <Linkedin className="h-4 w-4" />
+                  </a>
                 </Button>
               </div>
             </div>
@@ -107,9 +113,9 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-primary-foreground/60">
           <p>&copy; {currentYear} Gramlex Investments. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <span className="hover:text-primary-glow transition-colors cursor-pointer">Privacy Policy</span>
-            <span className="hover:text-primary-glow transition-colors cursor-pointer">Terms of Service</span>
+          <div className="flex space-x-6 mt-4 md:mt-0" role="navigation" aria-label="Footer legal">
+            <a href="#" className="hover:text-primary-glow transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-primary-glow transition-colors">Terms of Service</a>
           </div>
         </div>
       </div>
