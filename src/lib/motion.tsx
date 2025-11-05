@@ -1,6 +1,6 @@
 import React from "react";
 import { cn } from "@/lib/utils";
-import { pageMotion, staggerDefaults } from "./motionConstants";
+import { staggerDefaults } from "./motionConstants";
 
 /**
  * StaggerList
@@ -16,11 +16,13 @@ export function StaggerList({
   children: React.ReactNode;
   delay?: number;
 }) {
-  const prefersReduced = typeof window !== "undefined" &&
-    typeof window.matchMedia === "function" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prefersReduced = React.useMemo(() => {
+    return typeof window !== "undefined" &&
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }, []);
 
-  const items = React.Children.toArray(children).map((child, i) => {
+  const items = React.useMemo(() => React.Children.toArray(children).map((child, i) => {
     if (!React.isValidElement(child)) return child;
     const existingClass = (child.props as { className?: string }).className || "";
     const existingStyle = (child.props as { style?: React.CSSProperties }).style || {};
@@ -31,7 +33,7 @@ export function StaggerList({
       style: newStyle,
       key: (child as React.ReactElement).key ?? i,
     });
-  });
+  }), [children, delay, prefersReduced]);
 
   // Render as fragment so grid/flex containers keep children as direct items
   return <>{items}</>;

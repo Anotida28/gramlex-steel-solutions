@@ -250,7 +250,7 @@ const Projects = () => {
 
               <Button variant="default" size="lg" asChild>
                 <a href="mailto:gramlex.investments@gmail.com?subject=Project%20Portfolio%20Request">
-                  View All Projects
+                  Request Full Portfolio
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </a>
               </Button>

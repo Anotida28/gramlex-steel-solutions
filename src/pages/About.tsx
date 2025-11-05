@@ -63,9 +63,9 @@ const About = () => {
       />
       {/* Hero Section */}
       <section className="relative overflow-hidden py-20 bg-gradient-steel">
-        <div className="absolute inset-0 bg-steel-grid opacity-15"></div>
-        <div className="absolute -top-24 right-[-10%] h-72 w-72 rounded-full bg-primary/25 blur-[120px] pointer-events-none"></div>
-        <div className="absolute -bottom-32 left-[-15%] h-96 w-96 rounded-full bg-industrial-blue/30 blur-[160px] opacity-70 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-steel-grid opacity-15" aria-hidden="true"></div>
+        <div className="absolute -top-24 right-[-10%] h-72 w-72 rounded-full bg-primary/25 blur-[120px] pointer-events-none" aria-hidden="true"></div>
+        <div className="absolute -bottom-32 left-[-15%] h-96 w-96 rounded-full bg-industrial-blue/30 blur-[160px] opacity-70 pointer-events-none" aria-hidden="true"></div>
         <div className="relative container mx-auto px-4">
           <div className="text-center max-w-4xl mx-auto">
             <Badge
@@ -237,8 +237,8 @@ const About = () => {
 
       {/* CTA Section */}
       <section className="relative overflow-hidden py-20 bg-gradient-hero text-primary-foreground">
-        <div className="absolute inset-0 bg-steel-grid opacity-15 mix-blend-soft-light"></div>
-        <div className="absolute top-0 left-1/2 h-[420px] w-[420px] -translate-x-1/2 bg-white/10 blur-[190px]"></div>
+        <div className="absolute inset-0 bg-steel-grid opacity-15 mix-blend-soft-light" aria-hidden="true"></div>
+        <div className="absolute top-0 left-1/2 h-[420px] w-[420px] -translate-x-1/2 bg-white/10 blur-[190px]" aria-hidden="true"></div>
         <div className="relative container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             Partner with Experience

@@ -53,7 +53,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Navigation />
-        <main id="main-content" role="main" tabIndex={-1} className="focus-visible:outline-none">
+        <main id="main-content" tabIndex={-1}>
           <AnimatedRoutes />
         </main>
         <Footer />

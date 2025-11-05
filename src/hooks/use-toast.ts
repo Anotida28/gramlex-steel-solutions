@@ -183,9 +183,9 @@ function useToast() {
       if (toastId) {
         addToRemoveQueue(toastId)
       } else {
-        state.toasts.forEach((t) => addToRemoveQueue(t.id))
+        memoryState.toasts.forEach((t) => addToRemoveQueue(t.id))
       }
-      return dispatch({ type: "DISMISS_TOAST", toastId })
+      dispatch({ type: "DISMISS_TOAST", toastId })
     },
   }
 }

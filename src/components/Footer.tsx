@@ -90,17 +90,17 @@ const Footer = () => {
               <h5 className="font-medium mb-3">Follow Us</h5>
               <div className="flex space-x-3">
                 <Button variant="ghost" size="icon" className="h-8 w-8 text-primary-foreground/90 hover:text-primary-glow hover:bg-primary-glow/10 rounded-md focus-visible:ring-4 focus-visible:ring-primary/40" asChild>
-                  <a href="#" aria-label="Gramlex on Facebook" role="listitem">
+                  <a href="#" aria-label="Gramlex on Facebook">
                     <Facebook className="h-4 w-4" />
                   </a>
                 </Button>
                 <Button variant="ghost" size="icon" className="h-8 w-8 text-primary-foreground/90 hover:text-primary-glow hover:bg-primary-glow/10 rounded-md focus-visible:ring-4 focus-visible:ring-primary/40" asChild>
-                  <a href="#" aria-label="Gramlex on Twitter" role="listitem">
+                  <a href="#" aria-label="Gramlex on Twitter">
                     <Twitter className="h-4 w-4" />
                   </a>
                 </Button>
                 <Button variant="ghost" size="icon" className="h-8 w-8 text-primary-foreground/90 hover:text-primary-glow hover:bg-primary-glow/10 rounded-md focus-visible:ring-4 focus-visible:ring-primary/40" asChild>
-                  <a href="#" aria-label="Gramlex on LinkedIn" role="listitem">
+                  <a href="#" aria-label="Gramlex on LinkedIn">
                     <Linkedin className="h-4 w-4" />
                   </a>
                 </Button>

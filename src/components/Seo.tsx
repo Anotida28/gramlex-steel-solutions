@@ -22,9 +22,9 @@ const Seo = ({ title, description, canonical, ogImage }: SeoProps) => {
       <meta property="og:description" content={resolvedDescription} />
       <meta property="og:type" content="website" />
       {ogImage && <meta property="og:image" content={ogImage} />}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:title" content={resolvedTitle} />
-      <meta property="twitter:description" content={resolvedDescription} />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={resolvedTitle} />
+      <meta name="twitter:description" content={resolvedDescription} />
       {canonical && <link rel="canonical" href={canonical} />}
     </Helmet>
   );

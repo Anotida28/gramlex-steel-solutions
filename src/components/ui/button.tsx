@@ -28,3 +28,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button"
 
 export { Button }
+
+// Backwards-compat: some consumers import `buttonVariants` directly from
+// `components/ui/button`. We now keep the canonical definition in
+// `components/ui/buttonVariants.tsx` but re-export it here to avoid breaking
+// downstream imports. Prefer importing from './buttonVariants' in new code.
+export { buttonVariants } from "./buttonVariants"

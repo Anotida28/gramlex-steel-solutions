@@ -111,7 +111,7 @@ const Navigation = () => {
         {/* Main Navigation */}
         <div className="flex items-center justify-between py-4">
           <NavLink to="/" className="flex items-center space-x-3" aria-label="Gramlex home">
-            <img src={gramlexLogo} alt="Gramlex Investments" className="h-12 w-auto" loading="lazy" decoding="async" />
+            <img src={gramlexLogo} alt="Gramlex Investments" className="h-12 w-auto" decoding="async" />
             <div className="hidden sm:block">
               <h1 className="font-bold text-xl text-foreground">Gramlex Investments</h1>
               <p className="text-xs text-muted-foreground">Steel & General Hardware</p>
