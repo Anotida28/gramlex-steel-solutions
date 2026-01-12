@@ -1,4 +1,14 @@
-import { Facebook, Globe, Linkedin, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { 
+  Facebook, 
+  Globe, 
+  Linkedin, 
+  Mail, 
+  MapPin, 
+  MessageCircle, 
+  Phone,
+  ArrowRight,
+  ChevronRight,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import logo from "@/assets/gramlex-logo.png";
 import { COMPANY } from "@/shared/config/company.js";
@@ -27,112 +37,180 @@ const socialIconMap = {
   WhatsApp: MessageCircle,
 };
 
+const services = [
+  "Construction Support",
+  "Steel & Hardware Supply",
+  "Earthmoving Equipment",
+  "Project Management",
+];
+
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="section-tight border-t border-border bg-muted/30">
-      <div className="mx-auto grid max-w-6xl gap-8 px-6 md:grid-cols-2 lg:grid-cols-4">
-        <div className="card card-soft card-compact card-no-shadow">
-          <div className="flex items-center gap-3">
-            <img
-              src={logo}
-              alt={`${brandName} logo`}
-              className="brand-logo"
-              loading="lazy"
-              decoding="async"
-            />
-            <span className="text-lg font-semibold text-foreground">{brandName}</span>
-          </div>
-          <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{summary}</p>
-        </div>
-
-        <div className="card card-soft card-compact card-no-shadow">
-          <h3 className="text-base font-semibold text-foreground">Quick links</h3>
-          <ul className="stack-sm mt-5 text-sm text-muted-foreground">
-            {quickLinks.map((link) => (
-              <li key={link.to}>
-                <Link to={link.to} className="transition-colors hover:text-foreground">
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="card card-soft card-compact card-no-shadow">
-          <h3 className="text-base font-semibold text-foreground">Contact</h3>
-          <ul className="stack-sm mt-5 text-sm text-muted-foreground">
-            {phones.map((phone) => (
-              <li key={phone} className="info-stack">
-                <span className="info-stack__icon" aria-hidden="true">
-                  <Phone className="h-4 w-4" />
-                </span>
-                <span>{phone}</span>
-              </li>
-            ))}
-            {emailAddresses.map((email) => (
-              <li key={email} className="info-stack">
-                <span className="info-stack__icon" aria-hidden="true">
-                  <Mail className="h-4 w-4" />
-                </span>
-                <a href={`mailto:${email}`} className="transition-colors hover:text-foreground">
-                  {email}
-                </a>
-              </li>
-            ))}
-            {addressLine && (
-              <li className="info-stack">
-                <span className="info-stack__icon" aria-hidden="true">
-                  <MapPin className="h-4 w-4" />
-                </span>
-                <span>{addressLine}{addressCountry}</span>
-              </li>
-            )}
-            {serviceAreas && (
-              <li className="info-stack">
-                <span className="info-stack__icon" aria-hidden="true">
-                  <Globe className="h-4 w-4" />
-                </span>
-                <span>{serviceAreas}</span>
-              </li>
-            )}
-          </ul>
-        </div>
-
-        <div className="card card-soft card-compact card-no-shadow">
-          <h3 className="text-base font-semibold text-foreground">Connect</h3>
-          <div className="stack-sm mt-5 text-sm text-muted-foreground">
+    <footer className="footer">
+      <div className="container">
+        {/* Main Footer Content */}
+        <div className="footer-grid">
+          {/* Brand Column */}
+          <div className="footer-brand">
+            <Link to="/" className="inline-block">
+              <img
+                src={logo}
+                alt={`${brandName} logo`}
+                className="h-12 w-auto brightness-0 invert"
+                loading="lazy"
+                decoding="async"
+              />
+            </Link>
+            <p className="mt-6 text-steel-400 text-sm leading-relaxed">
+              {summary || "Zimbabwe's trusted partner for construction, steel supply, and earthmoving services. Delivering quality and reliability since 2009."}
+            </p>
+            
+            {/* Social Links */}
             {social.length > 0 && (
-              <ul className="stack-sm" aria-label="Social links">
+              <div className="footer-social mt-6">
                 {social.map(({ label, href }) => {
                   const Icon = socialIconMap[label] || MessageCircle;
                   return (
-                    <li key={label} className="info-stack">
-                      <span className="info-stack__icon" aria-hidden="true">
-                        <Icon className="h-4 w-4" />
-                      </span>
-                      <a href={href} className="transition-colors hover:text-foreground">
-                        {label}
-                      </a>
-                    </li>
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Follow us on ${label}`}
+                      className="group"
+                    >
+                      <Icon className="h-5 w-5" />
+                    </a>
                   );
                 })}
-              </ul>
+              </div>
             )}
-            {(hours.weekdays || hours.saturday || hours.emergency) && (
-              <div className="mt-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Hours</p>
-                <ul className="stack-sm mt-4 text-sm text-muted-foreground">
-                  {hours.weekdays && <li>{hours.weekdays}</li>}
-                  {hours.saturday && <li>{hours.saturday}</li>}
-                  {hours.emergency && <li>{hours.emergency}</li>}
-                </ul>
+          </div>
+
+          {/* Quick Links Column */}
+          <div className="footer-column">
+            <h4>Quick Links</h4>
+            <ul className="footer-links">
+              {quickLinks.map((link) => (
+                <li key={link.to}>
+                  <Link to={link.to} className="inline-flex items-center gap-1 group">
+                    <ChevronRight className="h-3 w-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Services Column */}
+          <div className="footer-column">
+            <h4>Services</h4>
+            <ul className="footer-links">
+              {services.map((service) => (
+                <li key={service}>
+                  <Link to="/services" className="inline-flex items-center gap-1 group">
+                    <ChevronRight className="h-3 w-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                    {service}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Column */}
+          <div className="footer-column">
+            <h4>Contact</h4>
+            <div className="space-y-4">
+              {phones.length > 0 && (
+                <div className="footer-contact-item">
+                  <Phone className="h-4 w-4 mt-0.5" />
+                  <div>
+                    {phones.map((phone) => (
+                      <a 
+                        key={phone} 
+                        href={`tel:${phone.replace(/\s/g, '')}`}
+                        className="block hover:text-gold transition-colors"
+                      >
+                        {phone}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+              
+              {emailAddresses.length > 0 && (
+                <div className="footer-contact-item">
+                  <Mail className="h-4 w-4 mt-0.5" />
+                  <div>
+                    {emailAddresses.slice(0, 2).map((email) => (
+                      <a 
+                        key={email} 
+                        href={`mailto:${email}`}
+                        className="block hover:text-gold transition-colors"
+                      >
+                        {email}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {addressLine && (
+                <div className="footer-contact-item">
+                  <MapPin className="h-4 w-4 mt-0.5" />
+                  <span>{addressLine}{addressCountry}</span>
+                </div>
+              )}
+
+              {serviceAreas && (
+                <div className="footer-contact-item">
+                  <Globe className="h-4 w-4 mt-0.5" />
+                  <span>{serviceAreas}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Operating Hours */}
+            {(hours.weekdays || hours.saturday) && (
+              <div className="mt-6 pt-6 border-t border-navy-lighter">
+                <p className="text-xs font-semibold uppercase tracking-wider text-steel-500 mb-3">
+                  Operating Hours
+                </p>
+                <div className="space-y-1 text-sm text-steel-400">
+                  {hours.weekdays && <p>{hours.weekdays}</p>}
+                  {hours.saturday && <p>{hours.saturday}</p>}
+                </div>
               </div>
             )}
           </div>
         </div>
-      </div>
-      <div className="mt-8 border-t border-border bg-background/60 py-4 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} {legalName}. All rights reserved.
+
+        {/* CTA Bar */}
+        <div className="mt-12 py-8 border-t border-navy-lighter">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            <div>
+              <h3 className="text-xl font-bold text-white mb-1">Ready to Start Your Project?</h3>
+              <p className="text-steel-400">Get in touch for a free consultation and quote.</p>
+            </div>
+            <Link to="/contact" className="btn btn-gold">
+              Contact Us Today
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="footer-bottom">
+          <p className="footer-copyright">
+            © {currentYear} {legalName || "Gramlex Investments (Pvt) Ltd"}. All rights reserved.
+          </p>
+          <div className="footer-legal">
+            <Link to="/privacy">Privacy Policy</Link>
+            <Link to="/terms">Terms of Service</Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

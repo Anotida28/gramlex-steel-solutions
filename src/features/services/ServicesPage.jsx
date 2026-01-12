@@ -1,11 +1,35 @@
-import { ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
+import { 
+  ChevronDown, 
+  ArrowRight, 
+  CheckCircle2, 
+  Building2, 
+  Wrench, 
+  Truck,
+  FileCheck,
+  Users,
+  Target,
+  Cog,
+  Package,
+} from "lucide-react";
 import Seo from "@/components/Seo.jsx";
+import { AnimatedSection } from "@/shared/components/AnimatedSection.jsx";
+import heroImage from "@/assets/hero-construction.jpg";
 import {
   serviceDetails,
   serviceFaqs,
   servicePillars,
   serviceProcess,
 } from "@/shared/content/services.js";
+
+// Map icons to service IDs
+const serviceIcons = {
+  construction: Building2,
+  steel: Wrench,
+  earthmoving: Truck,
+};
+
+const processIcons = [Target, Users, Cog, Package, FileCheck];
 
 const ServicesPage = () => {
   return (
@@ -15,148 +39,311 @@ const ServicesPage = () => {
         description="Construction support, steel & hardware supply, and earthmoving equipment delivered by Gramlex Investments."
       />
 
-      <section className="section border-b border-border bg-muted/30">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <span className="eyebrow">Services</span>
-          <h1 className="mt-6 text-4xl font-bold text-steel-dark md:text-5xl">
-            Integrated delivery across construction, steel, and earthmoving
-          </h1>
-          <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
-            One coordinated team managing procurement, fabrication, fleet mobilisation, and on-site execution.
-          </p>
-        </div>
-      </section>
-
-      <section className="section bg-background">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="grid gap-6 md:grid-cols-3">
-            {servicePillars.map(({ id, icon: Icon, title, description, highlights }) => (
-              <div key={id} className="card card-muted card-interactive">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <Icon aria-hidden="true" className="h-6 w-6" />
-                </div>
-                <h2 className="mt-5 text-xl font-semibold text-steel-dark">{title}</h2>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{description}</p>
-                <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                  What you get
-                </p>
-                <ul className="mt-5 space-y-2 text-sm text-muted-foreground">
-                  {highlights.map((detail) => (
-                    <li key={detail} className="flex items-start gap-2">
-                      <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
-                      {detail}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+      {/* ══════════════════════════════════════════════════════════════════════
+          HERO SECTION
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="relative py-32 lg:py-40 overflow-hidden">
+        <div className="absolute inset-0 bg-navy" />
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="container relative z-10">
+          <div className="max-w-3xl">
+            <span className="eyebrow" style={{ color: "hsl(var(--gold))" }}>
+              Our Services
+            </span>
+            <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
+              Integrated Delivery Across All Project Phases
+            </h1>
+            <p className="mt-6 text-xl text-steel-300 leading-relaxed max-w-2xl">
+              One coordinated team managing procurement, fabrication, fleet mobilisation, 
+              and on-site execution. We deliver what your project needs, when it needs it.
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link to="/contact" className="btn btn-gold btn-lg">
+                Get a Quote
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <a href="#services-detail" className="btn btn-white btn-lg">
+                Explore Services
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="section bg-muted/30">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="text-center">
-            <span className="eyebrow">Our Process</span>
-            <h2 className="mt-4 text-3xl font-bold text-steel-dark md:text-4xl">
-              How we deliver across every pillar
-            </h2>
-          </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3 lg:grid-cols-5">
-            {serviceProcess.map(({ title, description, icon: Icon }) => (
-              <div key={title} className="card card-compact">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
-                </div>
-                <h3 className="mt-4 text-lg font-semibold text-steel-dark">{title}</h3>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{description}</p>
-              </div>
-            ))}
+      {/* ══════════════════════════════════════════════════════════════════════
+          SERVICE PILLARS - Premium Cards
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="section-lg">
+        <div className="container">
+          <AnimatedSection className="section-header">
+            <span className="eyebrow">What We Offer</span>
+            <h2 className="section-title">Three Pillars of Excellence</h2>
+            <p className="section-subtitle">
+              Comprehensive solutions tailored to your construction, steel, and equipment needs.
+            </p>
+          </AnimatedSection>
+
+          <div className="grid gap-8 lg:grid-cols-3">
+            {servicePillars.map(({ id, icon: Icon, title, description, highlights }, index) => {
+              const ServiceIcon = serviceIcons[id] || Icon;
+              return (
+                <AnimatedSection key={id} delay={index * 100 + 100}>
+                  <div 
+                    className="card card-bordered card-body-lg group hover:border-primary/30 transition-all h-full"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+                        <ServiceIcon className="h-8 w-8" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-2xl font-bold text-navy mb-2">{title}</h3>
+                        <p className="text-steel-500">{description}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-8 pt-6 border-t border-border">
+                      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-steel-400 mb-4">
+                        Capabilities
+                      </p>
+                      <ul className="space-y-3">
+                        {highlights.map((item) => (
+                          <li key={item} className="flex items-center gap-3 text-sm text-steel-600">
+                            <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="mt-8">
+                      <a 
+                        href={`#service-${id}`} 
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors"
+                      >
+                        Learn more
+                        <ArrowRight className="h-4 w-4" />
+                      </a>
+                    </div>
+                  </div>
+                </AnimatedSection>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      <section className="section">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="space-y-8">
-            {serviceDetails.map(({ id, icon: Icon, title, summary, whatWeDo, deliverables, process }) => (
-              <div key={id} className="card card-muted">
-                <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                  <div className="flex items-center gap-3">
-                    <span className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <Icon className="h-6 w-6" aria-hidden="true" />
-                    </span>
-                    <div>
-                      <h2 className="text-2xl font-semibold text-steel-dark">{title}</h2>
-                      <p className="text-sm text-muted-foreground">{summary}</p>
+      {/* ══════════════════════════════════════════════════════════════════════
+          OUR PROCESS - Timeline
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="section-lg section-muted">
+        <div className="container">
+          <AnimatedSection className="section-header">
+            <span className="eyebrow">How We Work</span>
+            <h2 className="section-title">Our Proven Process</h2>
+            <p className="section-subtitle">
+              A systematic approach ensures quality delivery on every project.
+            </p>
+          </AnimatedSection>
+
+          <div className="relative">
+            {/* Timeline Line */}
+            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-border -translate-y-1/2" />
+            
+            <div className="grid gap-8 md:grid-cols-3 lg:grid-cols-5">
+              {serviceProcess.map(({ title, description, icon: Icon }, index) => {
+                const ProcessIcon = processIcons[index] || Icon;
+                return (
+                  <AnimatedSection key={title} animation="scale-in" delay={index * 100}>
+                    <div className="relative">
+                      {/* Step Number */}
+                      <div className="flex flex-col items-center text-center">
+                        <div className="relative z-10 mb-6">
+                          <div className="h-20 w-20 rounded-full bg-white shadow-xl border-4 border-primary/20 flex items-center justify-center">
+                            <ProcessIcon className="h-8 w-8 text-primary" />
+                          </div>
+                          <span className="absolute -top-2 -right-2 h-8 w-8 rounded-full bg-gold text-navy text-sm font-bold flex items-center justify-center">
+                            {index + 1}
+                          </span>
+                        </div>
+                        <h3 className="text-lg font-bold text-navy mb-2">{title}</h3>
+                        <p className="text-sm text-steel-500 leading-relaxed">{description}</p>
+                      </div>
+                    </div>
+                  </AnimatedSection>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          DETAILED SERVICES
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section id="services-detail" className="section-lg">
+        <div className="container">
+          <div className="section-header section-header-left">
+            <span className="eyebrow">In-Depth</span>
+            <h2 className="section-title">Service Details</h2>
+            <p className="section-subtitle">
+              Comprehensive breakdown of our capabilities in each service area.
+            </p>
+          </div>
+
+          <div className="space-y-12">
+            {serviceDetails.map(({ id, icon: Icon, title, summary, whatWeDo, deliverables, process }) => {
+              const ServiceIcon = serviceIcons[id] || Icon;
+              return (
+                <div 
+                  key={id} 
+                  id={`service-${id}`}
+                  className="scroll-mt-32 bg-white rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
+                >
+                  {/* Header */}
+                  <div className="bg-navy p-8">
+                    <div className="flex items-center gap-4">
+                      <div className="h-14 w-14 rounded-xl bg-gold flex items-center justify-center">
+                        <ServiceIcon className="h-7 w-7 text-navy" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-white">{title}</h3>
+                        <p className="text-steel-300 mt-1">{summary}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-8">
+                    <div className="grid gap-8 lg:grid-cols-3">
+                      <div>
+                        <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-navy mb-4">
+                          <span className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                            <Target className="h-4 w-4 text-primary" />
+                          </span>
+                          What We Do
+                        </h4>
+                        <ul className="space-y-3">
+                          {whatWeDo.map((item) => (
+                            <li key={item} className="flex items-start gap-3 text-sm text-steel-600">
+                              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-navy mb-4">
+                          <span className="h-8 w-8 rounded-lg bg-gold/10 flex items-center justify-center">
+                            <Package className="h-4 w-4 text-gold-dark" />
+                          </span>
+                          Deliverables
+                        </h4>
+                        <ul className="space-y-3">
+                          {deliverables.map((item) => (
+                            <li key={item} className="flex items-start gap-3 text-sm text-steel-600">
+                              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-gold flex-shrink-0" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      
+                      <div>
+                        <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-navy mb-4">
+                          <span className="h-8 w-8 rounded-lg bg-navy/10 flex items-center justify-center">
+                            <Cog className="h-4 w-4 text-navy" />
+                          </span>
+                          Process
+                        </h4>
+                        <ul className="space-y-3">
+                          {process.map((item, idx) => (
+                            <li key={item} className="flex items-start gap-3 text-sm text-steel-600">
+                              <span className="mt-0.5 h-5 w-5 rounded-full bg-navy text-white text-xs flex items-center justify-center flex-shrink-0">
+                                {idx + 1}
+                              </span>
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div className="mt-8 grid gap-6 lg:grid-cols-3">
-                  <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                      What we do
-                    </h3>
-                    <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                      {whatWeDo.map((item) => (
-                        <li key={item} className="flex items-start gap-2">
-                          <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                      Typical deliverables
-                    </h3>
-                    <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                      {deliverables.map((item) => (
-                        <li key={item} className="flex items-start gap-2">
-                          <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-                      Process
-                    </h3>
-                    <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                      {process.map((item) => (
-                        <li key={item} className="flex items-start gap-2">
-                          <span className="mt-1 h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          FAQ SECTION
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="section-lg section-muted">
+        <div className="container container-sm">
+          <div className="section-header">
+            <span className="eyebrow">FAQ</span>
+            <h2 className="section-title">Common Questions</h2>
+            <p className="section-subtitle">
+              Answers to frequently asked questions about our services.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {serviceFaqs.map((faq, index) => (
+              <details 
+                key={faq.question} 
+                className="group bg-white rounded-xl border border-border overflow-hidden"
+              >
+                <summary className="flex cursor-pointer items-center justify-between p-6 font-semibold text-navy hover:bg-steel-50 transition-colors">
+                  <span className="flex items-center gap-4">
+                    <span className="flex-shrink-0 h-8 w-8 rounded-lg bg-primary/10 text-primary text-sm font-bold flex items-center justify-center group-open:bg-primary group-open:text-white transition-colors">
+                      {index + 1}
+                    </span>
+                    {faq.question}
+                  </span>
+                  <ChevronDown className="h-5 w-5 text-steel-400 transition-transform duration-300 group-open:rotate-180" />
+                </summary>
+                <div className="px-6 pb-6 pt-2">
+                  <div className="pl-12">
+                    <p className="text-steel-600 leading-relaxed">{faq.answer}</p>
                   </div>
                 </div>
-              </div>
+              </details>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section bg-background">
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="text-center">
-            <span className="eyebrow">FAQ</span>
-            <h2 className="mt-4 text-3xl font-bold text-steel-dark md:text-4xl">
-              Frequently asked questions
+      {/* ══════════════════════════════════════════════════════════════════════
+          CTA SECTION
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="section-lg relative overflow-hidden">
+        <div className="absolute inset-0 bg-primary" />
+        <div className="container relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Ready to Get Started?
             </h2>
-          </div>
-          <div className="mt-10 space-y-4">
-            {serviceFaqs.map((faq) => (
-              <details key={faq.question} className="group rounded-2xl border border-border bg-muted/30 px-5 py-4">
-                <summary className="flex cursor-pointer items-center justify-between text-sm font-semibold text-steel-dark">
-                  <span>{faq.question}</span>
-                  <ChevronDown className="h-4 w-4 transition-transform duration-300 group-open:rotate-180" />
-                </summary>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{faq.answer}</p>
-              </details>
-            ))}
+            <p className="text-xl text-primary-foreground/80 mb-10">
+              Contact our team to discuss your project requirements and get a customized solution.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact" className="btn btn-white btn-xl">
+                Request a Quote
+                <ArrowRight className="h-5 w-5" />
+              </Link>
+              <Link to="/projects" className="btn btn-outline btn-xl border-white text-white hover:bg-white hover:text-primary">
+                View Our Projects
+              </Link>
+            </div>
           </div>
         </div>
       </section>

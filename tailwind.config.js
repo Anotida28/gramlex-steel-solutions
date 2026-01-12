@@ -90,14 +90,12 @@ const config = {
       },
       fontFamily: {
         sans: [
-          "Inter",
+          "Source Sans 3",
+          "Helvetica Neue",
+          "Arial",
           "ui-sans-serif",
           "system-ui",
           "-apple-system",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica Neue",
-          "Arial",
         ],
       },
       fontSize: {

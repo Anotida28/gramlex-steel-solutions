@@ -1,0 +1,19 @@
+import "@testing-library/jest-dom";
+
+// Mock matchMedia for tests (needed for reduced motion, dark mode, etc.)
+Object.defineProperty(window, "matchMedia", {
+  writable: true,
+  value: vi.fn().mockImplementation((query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
+});
+
+// Mock scrollTo
+window.scrollTo = vi.fn();
