@@ -175,7 +175,7 @@ const AboutPage = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          VALUES SECTION
+          VALUES SECTION - Refined Color Usage
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="section-lg section-muted">
         <div className="container">
@@ -187,18 +187,18 @@ const AboutPage = () => {
             </p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-4">
             {values.map(({ title, description, icon: Icon }, index) => (
               <div 
                 key={title} 
-                className="relative bg-white rounded-2xl p-8 border border-border shadow-sm hover:shadow-xl transition-shadow group"
+                className="relative bg-white rounded-2xl p-6 lg:p-7 border border-border shadow-sm hover-lift card-glow group"
               >
-                <div className="h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all mb-6">
-                  <Icon className="h-8 w-8" />
+                <div className="h-12 w-12 rounded-xl bg-navy/5 flex items-center justify-center text-navy group-hover:bg-navy group-hover:text-gold transition-all mb-4">
+                  <Icon className="h-6 w-6" />
                 </div>
-                <h3 className="text-xl font-bold text-navy mb-3">{title}</h3>
-                <p className="text-steel-500 leading-relaxed">{description}</p>
-                <span className="absolute top-6 right-6 text-6xl font-bold text-steel-100">
+                <h3 className="text-lg font-bold text-navy mb-2">{title}</h3>
+                <p className="text-steel-500 text-[0.9375rem] leading-relaxed">{description}</p>
+                <span className="absolute top-5 right-5 text-5xl font-bold text-steel-100 group-hover:text-steel-200 transition-colors">
                   {String(index + 1).padStart(2, '0')}
                 </span>
               </div>
@@ -208,9 +208,9 @@ const AboutPage = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          COMPANY TIMELINE
+          COMPANY TIMELINE - Enhanced Design
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="section-lg">
+      <section className="section-lg section-cool">
         <div className="container">
           <div className="section-header">
             <span className="eyebrow">Our Journey</span>
@@ -220,23 +220,26 @@ const AboutPage = () => {
             </p>
           </div>
 
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-border -translate-y-1/2 rounded-full" />
+          <div className="timeline relative">
+            {/* Enhanced Timeline Connector */}
+            <div className="timeline-connector hidden md:block" />
             
-            <div className="grid gap-8 md:grid-cols-5">
+            <div className="grid gap-6 md:gap-8 md:grid-cols-5">
               {timeline.map(({ year, title, description }, index) => (
-                <div key={year} className="relative">
-                  <div className="flex flex-col items-center text-center">
-                    {/* Year Badge */}
-                    <div className="relative z-10 mb-6">
-                      <div className="h-24 w-24 rounded-full bg-navy shadow-xl flex flex-col items-center justify-center">
-                        <Calendar className="h-5 w-5 text-gold mb-1" />
-                        <span className="text-xl font-bold text-white">{year}</span>
-                      </div>
+                <div key={year} className="timeline-item">
+                  {/* Enhanced Year Node */}
+                  <div className="timeline-node">
+                    <div className="timeline-node-ring hidden md:block" style={{ animationDelay: `${index * 200}ms` }} />
+                    <div className="timeline-year-node">
+                      <Calendar className="h-5 w-5 timeline-year-node-icon" />
+                      <span className="timeline-year">{year}</span>
                     </div>
-                    <h3 className="text-lg font-bold text-navy mb-2">{title}</h3>
-                    <p className="text-sm text-steel-500">{description}</p>
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="timeline-content mt-6">
+                    <h3 className="timeline-title">{title}</h3>
+                    <p className="timeline-desc">{description}</p>
                   </div>
                 </div>
               ))}
@@ -357,25 +360,25 @@ const AboutPage = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          CTA SECTION
+          CTA SECTION - Clear Button Hierarchy
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="section-lg relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary" />
+        <div className="absolute inset-0 bg-navy" />
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Ready to Partner With Us?
             </h2>
-            <p className="text-xl text-primary-foreground/80 mb-10">
+            <p className="text-xl text-steel-300 mb-10">
               Let's discuss how Gramlex can support your next project with 
               reliable delivery, quality materials, and expert service.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="btn btn-white btn-xl">
+              <Link to="/contact" className="btn btn-gold btn-xl">
                 Contact Our Team
                 <ArrowRight className="h-5 w-5" />
               </Link>
-              <Link to="/services" className="btn btn-outline btn-xl border-white text-white hover:bg-white hover:text-primary">
+              <Link to="/services" className="btn btn-ghost btn-xl border-white/30 text-white hover:bg-white/10 hover:border-white/50">
                 Explore Services
               </Link>
             </div>

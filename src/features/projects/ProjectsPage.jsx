@@ -120,13 +120,13 @@ const ProjectsPage = () => {
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="relative -mt-16 z-10">
         <div className="container">
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {projectStats.map((stat, index) => (
               <div 
                 key={stat.label} 
-                className="bg-white rounded-xl shadow-xl p-6 text-center border border-border hover:shadow-2xl transition-shadow"
+                className="bg-white rounded-xl shadow-xl p-6 text-center border border-border hover-lift group"
               >
-                <p className="text-4xl font-bold text-primary mb-2">
+                <p className="text-4xl font-bold text-navy mb-2 group-hover:text-gold transition-colors">
                   {stat.value}
                   <span className="text-gold">+</span>
                 </p>
@@ -140,12 +140,12 @@ const ProjectsPage = () => {
       {/* ══════════════════════════════════════════════════════════════════════
           PROJECT FILTERS
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="section-lg">
+      <section className="section-lg section-gradient-reverse">
         <div className="container">
-          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-10">
             <div>
               <span className="eyebrow">Browse Projects</span>
-              <h2 className="section-title mt-4">Filter by Category</h2>
+              <h2 className="section-title mt-3">Filter by Category</h2>
               <p className="text-steel-500 mt-2">
                 Explore our work across different sectors and delivery types.
               </p>
@@ -172,7 +172,7 @@ const ProjectsPage = () => {
           </div>
 
           {/* Project Grid */}
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
             {filteredProjects.map((project, index) => (
               <article 
                 key={project.id}

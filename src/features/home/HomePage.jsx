@@ -106,7 +106,6 @@ const HomePage = () => {
               <div key={point.label} className="hero-stat">
                 <p className="hero-stat-value">
                   {point.value}
-                  <span>+</span>
                 </p>
                 <p className="hero-stat-label">{point.label}</p>
               </div>
@@ -134,7 +133,7 @@ const HomePage = () => {
             </p>
           </AnimatedSection>
 
-          <div className="grid gap-8 lg:grid-cols-3">
+          <div className="grid gap-6 md:gap-8 lg:grid-cols-3">
             {servicePillars.map(({ id, icon: Icon, title, description }, index) => {
               const ServiceIcon = serviceIcons[id] || Icon;
               return (
@@ -165,7 +164,7 @@ const HomePage = () => {
             })}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-14 text-center">
             <Link to="/services" className="btn btn-outline btn-lg">
               Explore All Services
               <ArrowRight className="h-4 w-4" />
@@ -177,7 +176,7 @@ const HomePage = () => {
       {/* ══════════════════════════════════════════════════════════════════════
           WHY CHOOSE US - Trust Section
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="section-lg">
+      <section className="section-lg section-warm">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection animation="fade-right">
@@ -185,17 +184,17 @@ const HomePage = () => {
               <h2 className="section-title gold-accent">
                 Built for Quality, Safety, and Reliability
               </h2>
-              <p className="mt-6 text-lg text-steel-600">
+              <p className="mt-6 text-lead">
                 We combine technical expertise with disciplined logistics to protect your 
                 schedule and standards. Every project receives dedicated attention from 
                 our experienced team.
               </p>
 
-              <div className="mt-10 grid grid-cols-2 gap-6">
+              <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-8">
                 {differentiators.map(({ icon: Icon, title, description }, index) => (
                   <AnimatedSection key={title} delay={(index + 1) * 100}>
                     <div className="group">
-                      <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all group-hover:bg-primary group-hover:text-white">
+                      <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-steel-100 text-navy transition-all group-hover:bg-navy group-hover:text-gold">
                         <Icon className="h-6 w-6" />
                       </div>
                       <h3 className="text-lg font-semibold text-navy mb-2">{title}</h3>
@@ -217,8 +216,8 @@ const HomePage = () => {
               </div>
               {/* Stats Overlay Card */}
               <div className="absolute -bottom-8 -left-8 bg-white rounded-xl shadow-2xl p-8 max-w-xs">
-                <p className="text-5xl font-bold text-primary mb-2">15+</p>
-                <p className="text-sm font-medium text-steel-500">
+                <p className="text-5xl font-bold text-primary mb-3">15+</p>
+                <p className="text-sm font-medium text-steel-500 leading-relaxed">
                   Years of Excellence in Construction & Steel Supply
                 </p>
               </div>
@@ -241,7 +240,7 @@ const HomePage = () => {
             </p>
           </AnimatedSection>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-5 md:gap-6 lg:gap-8 md:grid-cols-2 lg:grid-cols-4">
             {featuredProjects.map((project, index) => (
               <AnimatedSection key={project.id} animation="scale-in" delay={index * 100}>
                 <Link to="/projects" className="project-card block h-full">
@@ -268,7 +267,7 @@ const HomePage = () => {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-14 text-center">
             <Link to="/projects" className="btn btn-gold btn-lg">
               View Full Portfolio
               <ArrowRight className="h-4 w-4" />
@@ -280,7 +279,7 @@ const HomePage = () => {
       {/* ══════════════════════════════════════════════════════════════════════
           TESTIMONIALS
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="section-lg section-gradient">
+      <section className="section-lg section-cool">
         <div className="container">
           <AnimatedSection className="section-header">
             <span className="eyebrow">Testimonials</span>
@@ -291,14 +290,14 @@ const HomePage = () => {
             </p>
           </AnimatedSection>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-6 md:gap-8 md:grid-cols-3">
             {testimonials.map((testimonial, index) => (
               <AnimatedSection key={testimonial.name} delay={index * 100 + 100}>
-                <div className="testimonial-card h-full">
+                <div className="testimonial-card h-full hover:translate-y-[-4px] transition-transform duration-300">
                   <span className="testimonial-quote">"</span>
                   <p className="testimonial-text">{testimonial.quote}</p>
                   <div className="testimonial-author">
-                    <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">
+                    <div className="h-12 w-12 rounded-full bg-navy/10 flex items-center justify-center text-navy font-bold text-lg">
                       {testimonial.name.charAt(0)}
                     </div>
                     <div>

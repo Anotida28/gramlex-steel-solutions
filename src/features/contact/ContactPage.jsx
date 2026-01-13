@@ -114,13 +114,13 @@ const ContactPage = () => {
       {/* ══════════════════════════════════════════════════════════════════════
           MAIN CONTENT - Two Column Layout
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="section-lg">
+      <section className="section-lg section-warm">
         <div className="container">
-          <div className="grid gap-12 lg:grid-cols-[1.2fr,0.8fr]">
+          <div className="grid gap-10 lg:gap-16 lg:grid-cols-[1.2fr,0.8fr]">
             
             {/* FORM SECTION */}
             <div>
-              <div className="bg-white rounded-2xl border border-border shadow-sm p-8 md:p-10">
+              <div className="bg-white rounded-2xl border border-border shadow-sm p-6 md:p-10 lg:p-12 hover:shadow-lg transition-shadow">
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold text-navy mb-2">Tell Us About Your Project</h2>
                   <p className="text-steel-500">
@@ -146,7 +146,7 @@ const ContactPage = () => {
                   aria-label="Project enquiry form"
                   onSubmit={handleSubmit(onSubmit)}
                   noValidate
-                  className="space-y-6"
+                  className="space-y-7"
                 >
                   {/* Name & Company */}
                   <div className="grid gap-6 md:grid-cols-2">
@@ -277,11 +277,11 @@ const ContactPage = () => {
             </div>
 
             {/* CONTACT INFO SIDEBAR */}
-            <div className="space-y-6">
+            <div className="space-y-8">
               {/* Contact Details Card */}
               <div className="bg-navy rounded-2xl p-8 text-white">
-                <h3 className="text-xl font-bold mb-6 text-gold">Contact Details</h3>
-                <div className="space-y-6">
+                <h3 className="text-xl font-bold mb-8 text-gold">Contact Details</h3>
+                <div className="space-y-7">
                   {phones.length > 0 && (
                     <div className="flex items-start gap-4">
                       <div className="h-12 w-12 rounded-xl bg-navy-lighter flex items-center justify-center flex-shrink-0">
@@ -412,7 +412,7 @@ const ContactPage = () => {
             </p>
           </div>
 
-          <div className="grid gap-8 lg:grid-cols-3">
+          <div className="grid gap-6 lg:gap-10 lg:grid-cols-3">
             <div className="lg:col-span-2 bg-steel-200 rounded-2xl h-80 flex items-center justify-center">
               <div className="text-center p-8">
                 <Building2 className="h-16 w-16 text-steel-400 mx-auto mb-4" />

@@ -78,7 +78,7 @@ const ServicesPage = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          SERVICE PILLARS - Premium Cards
+          SERVICE PILLARS - Premium Cards with Improved Interactions
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="section-lg">
         <div className="container">
@@ -90,45 +90,45 @@ const ServicesPage = () => {
             </p>
           </AnimatedSection>
 
-          <div className="grid gap-8 lg:grid-cols-3">
+          <div className="grid gap-6 lg:gap-8 lg:grid-cols-3">
             {servicePillars.map(({ id, icon: Icon, title, description, highlights }, index) => {
               const ServiceIcon = serviceIcons[id] || Icon;
               return (
                 <AnimatedSection key={id} delay={index * 100 + 100}>
                   <div 
-                    className="card card-bordered card-body-lg group hover:border-primary/30 transition-all h-full"
+                    className="card card-bordered card-body-lg card-glow group hover:border-gold/30 hover-lift h-full"
                   >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 h-16 w-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
-                        <ServiceIcon className="h-8 w-8" />
+                    <div className="flex items-start gap-5">
+                      <div className="flex-shrink-0 h-14 w-14 rounded-2xl bg-navy/5 flex items-center justify-center text-navy group-hover:bg-navy group-hover:text-gold transition-all">
+                        <ServiceIcon className="h-7 w-7" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-navy mb-2">{title}</h3>
-                        <p className="text-steel-500">{description}</p>
+                        <h3 className="text-xl font-bold text-navy mb-1.5 group-hover:text-navy transition-colors">{title}</h3>
+                        <p className="text-steel-500 text-[0.9375rem] leading-relaxed">{description}</p>
                       </div>
                     </div>
                     
-                    <div className="mt-8 pt-6 border-t border-border">
-                      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-steel-400 mb-4">
+                    <div className="mt-6 pt-5 border-t border-border">
+                      <p className="text-label mb-3">
                         Capabilities
                       </p>
-                      <ul className="space-y-3">
+                      <ul className="space-y-2.5">
                         {highlights.map((item) => (
-                          <li key={item} className="flex items-center gap-3 text-sm text-steel-600">
-                            <CheckCircle2 className="h-4 w-4 text-primary flex-shrink-0" />
+                          <li key={item} className="flex items-center gap-3 text-sm text-steel-600 group/item">
+                            <CheckCircle2 className="h-4 w-4 text-gold flex-shrink-0 group-hover/item:text-gold-dark transition-colors" />
                             {item}
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="mt-8">
+                    <div className="mt-6 pt-1">
                       <a 
                         href={`#service-${id}`} 
-                        className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-dark transition-colors"
+                        className="inline-flex items-center gap-2 text-sm font-semibold text-navy hover:text-gold transition-colors group/link"
                       >
                         Learn more
-                        <ArrowRight className="h-4 w-4" />
+                        <ArrowRight className="h-4 w-4 group-hover/link:translate-x-1 transition-transform" />
                       </a>
                     </div>
                   </div>
@@ -140,9 +140,9 @@ const ServicesPage = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          OUR PROCESS - Timeline
+          OUR PROCESS - Enhanced Timeline
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="section-lg section-muted">
+      <section className="section-lg section-warm">
         <div className="container">
           <AnimatedSection className="section-header">
             <span className="eyebrow">How We Work</span>
@@ -152,28 +152,29 @@ const ServicesPage = () => {
             </p>
           </AnimatedSection>
 
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-border -translate-y-1/2" />
+          <div className="timeline relative">
+            {/* Enhanced Timeline Connector */}
+            <div className="timeline-connector hidden lg:block" />
             
-            <div className="grid gap-8 md:grid-cols-3 lg:grid-cols-5">
+            <div className="grid gap-6 md:gap-8 md:grid-cols-3 lg:grid-cols-5">
               {serviceProcess.map(({ title, description, icon: Icon }, index) => {
                 const ProcessIcon = processIcons[index] || Icon;
                 return (
                   <AnimatedSection key={title} animation="scale-in" delay={index * 100}>
-                    <div className="relative">
-                      {/* Step Number */}
-                      <div className="flex flex-col items-center text-center">
-                        <div className="relative z-10 mb-6">
-                          <div className="h-20 w-20 rounded-full bg-white shadow-xl border-4 border-primary/20 flex items-center justify-center">
-                            <ProcessIcon className="h-8 w-8 text-primary" />
-                          </div>
-                          <span className="absolute -top-2 -right-2 h-8 w-8 rounded-full bg-gold text-navy text-sm font-bold flex items-center justify-center">
-                            {index + 1}
-                          </span>
+                    <div className="timeline-item">
+                      {/* Enhanced Node */}
+                      <div className="timeline-node">
+                        <div className="timeline-node-ring hidden lg:block" style={{ animationDelay: `${index * 200}ms` }} />
+                        <div className="timeline-node-circle">
+                          <ProcessIcon className="timeline-node-icon" />
                         </div>
-                        <h3 className="text-lg font-bold text-navy mb-2">{title}</h3>
-                        <p className="text-sm text-steel-500 leading-relaxed">{description}</p>
+                        <span className="timeline-step">{index + 1}</span>
+                      </div>
+                      
+                      {/* Content */}
+                      <div className="timeline-content">
+                        <h3 className="timeline-title">{title}</h3>
+                        <p className="timeline-desc">{description}</p>
                       </div>
                     </div>
                   </AnimatedSection>
@@ -185,9 +186,9 @@ const ServicesPage = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          DETAILED SERVICES
+          DETAILED SERVICES - Improved Card Layout
       ══════════════════════════════════════════════════════════════════════ */}
-      <section id="services-detail" className="section-lg">
+      <section id="services-detail" className="section-lg section-gradient-reverse">
         <div className="container">
           <div className="section-header section-header-left">
             <span className="eyebrow">In-Depth</span>
@@ -197,86 +198,90 @@ const ServicesPage = () => {
             </p>
           </div>
 
-          <div className="space-y-12">
+          <div className="space-y-12 lg:space-y-16">
             {serviceDetails.map(({ id, icon: Icon, title, summary, whatWeDo, deliverables, process }) => {
               const ServiceIcon = serviceIcons[id] || Icon;
               return (
-                <div 
-                  key={id} 
-                  id={`service-${id}`}
-                  className="scroll-mt-32 bg-white rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-lg transition-shadow"
-                >
-                  {/* Header */}
-                  <div className="bg-navy p-8">
-                    <div className="flex items-center gap-4">
-                      <div className="h-14 w-14 rounded-xl bg-gold flex items-center justify-center">
-                        <ServiceIcon className="h-7 w-7 text-navy" />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-white">{title}</h3>
-                        <p className="text-steel-300 mt-1">{summary}</p>
+                <AnimatedSection key={id}>
+                  <div 
+                    id={`service-${id}`}
+                    className="scroll-mt-32 bg-white rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+                  >
+                    {/* Header */}
+                    <div className="bg-navy p-6 lg:p-8">
+                      <div className="flex items-center gap-4">
+                        <div className="h-14 w-14 rounded-xl bg-gold flex items-center justify-center flex-shrink-0">
+                          <ServiceIcon className="h-7 w-7 text-navy" />
+                        </div>
+                        <div>
+                          <h3 className="text-xl lg:text-2xl font-bold text-white">{title}</h3>
+                          <p className="text-steel-300 mt-1 text-[0.9375rem]">{summary}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Content */}
-                  <div className="p-8">
-                    <div className="grid gap-8 lg:grid-cols-3">
-                      <div>
-                        <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-navy mb-4">
-                          <span className="h-8 w-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                            <Target className="h-4 w-4 text-primary" />
-                          </span>
-                          What We Do
-                        </h4>
-                        <ul className="space-y-3">
-                          {whatWeDo.map((item) => (
-                            <li key={item} className="flex items-start gap-3 text-sm text-steel-600">
-                              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div>
-                        <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-navy mb-4">
-                          <span className="h-8 w-8 rounded-lg bg-gold/10 flex items-center justify-center">
-                            <Package className="h-4 w-4 text-gold-dark" />
-                          </span>
-                          Deliverables
-                        </h4>
-                        <ul className="space-y-3">
-                          {deliverables.map((item) => (
-                            <li key={item} className="flex items-start gap-3 text-sm text-steel-600">
-                              <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-gold flex-shrink-0" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      
-                      <div>
-                        <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-navy mb-4">
-                          <span className="h-8 w-8 rounded-lg bg-navy/10 flex items-center justify-center">
-                            <Cog className="h-4 w-4 text-navy" />
-                          </span>
-                          Process
-                        </h4>
-                        <ul className="space-y-3">
-                          {process.map((item, idx) => (
-                            <li key={item} className="flex items-start gap-3 text-sm text-steel-600">
-                              <span className="mt-0.5 h-5 w-5 rounded-full bg-navy text-white text-xs flex items-center justify-center flex-shrink-0">
-                                {idx + 1}
-                              </span>
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
+                    {/* Content - Improved spacing and grouping */}
+                    <div className="p-6 lg:p-8">
+                      <div className="grid gap-8 lg:gap-10 lg:grid-cols-3">
+                        {/* What We Do */}
+                        <div className="space-y-4">
+                          <h4 className="flex items-center gap-2.5 text-sm font-bold uppercase tracking-wider text-navy">
+                            <span className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
+                              <Target className="h-4.5 w-4.5 text-primary" />
+                            </span>
+                            What We Do
+                          </h4>
+                          <ul className="space-y-3">
+                            {whatWeDo.map((item) => (
+                              <li key={item} className="flex items-start gap-2.5 text-steel-600 text-[0.9375rem] group">
+                                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary/60 flex-shrink-0 group-hover:bg-primary transition-colors" />
+                                <span className="leading-relaxed">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        
+                        {/* Deliverables */}
+                        <div className="space-y-4">
+                          <h4 className="flex items-center gap-2.5 text-sm font-bold uppercase tracking-wider text-navy">
+                            <span className="h-9 w-9 rounded-lg bg-gold/10 flex items-center justify-center">
+                              <Package className="h-4.5 w-4.5 text-gold-dark" />
+                            </span>
+                            Deliverables
+                          </h4>
+                          <ul className="space-y-3">
+                            {deliverables.map((item) => (
+                              <li key={item} className="flex items-start gap-2.5 text-steel-600 text-[0.9375rem] group">
+                                <span className="mt-2 h-1.5 w-1.5 rounded-full bg-gold/60 flex-shrink-0 group-hover:bg-gold transition-colors" />
+                                <span className="leading-relaxed">{item}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                        
+                        {/* Process */}
+                        <div className="space-y-4">
+                          <h4 className="flex items-center gap-2.5 text-sm font-bold uppercase tracking-wider text-navy">
+                            <span className="h-9 w-9 rounded-lg bg-navy/10 flex items-center justify-center">
+                              <Cog className="h-4.5 w-4.5 text-navy" />
+                            </span>
+                            Process
+                          </h4>
+                          <ol className="space-y-3">
+                            {process.map((item, idx) => (
+                              <li key={item} className="flex items-start gap-2.5 text-steel-600 text-[0.9375rem] group">
+                                <span className="mt-0.5 h-5 w-5 rounded-full bg-navy text-white text-[0.6875rem] font-semibold flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors">
+                                  {idx + 1}
+                                </span>
+                                <span className="leading-relaxed">{item}</span>
+                              </li>
+                            ))}
+                          </ol>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                </AnimatedSection>
               );
             })}
           </div>
@@ -284,9 +289,9 @@ const ServicesPage = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          FAQ SECTION
+          FAQ SECTION - Improved Interactions
       ══════════════════════════════════════════════════════════════════════ */}
-      <section className="section-lg section-muted">
+      <section className="section-lg section-cool">
         <div className="container container-sm">
           <div className="section-header">
             <span className="eyebrow">FAQ</span>
@@ -296,20 +301,20 @@ const ServicesPage = () => {
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {serviceFaqs.map((faq, index) => (
               <details 
                 key={faq.question} 
-                className="group bg-white rounded-xl border border-border overflow-hidden"
+                className="group bg-white rounded-xl border border-border overflow-hidden hover:border-steel-300 transition-colors"
               >
                 <summary className="flex cursor-pointer items-center justify-between p-6 font-semibold text-navy hover:bg-steel-50 transition-colors">
                   <span className="flex items-center gap-4">
-                    <span className="flex-shrink-0 h-8 w-8 rounded-lg bg-primary/10 text-primary text-sm font-bold flex items-center justify-center group-open:bg-primary group-open:text-white transition-colors">
+                    <span className="flex-shrink-0 h-8 w-8 rounded-lg bg-navy/5 text-navy text-sm font-bold flex items-center justify-center group-open:bg-navy group-open:text-white transition-all">
                       {index + 1}
                     </span>
                     {faq.question}
                   </span>
-                  <ChevronDown className="h-5 w-5 text-steel-400 transition-transform duration-300 group-open:rotate-180" />
+                  <ChevronDown className="h-5 w-5 text-steel-400 transition-transform duration-300 group-open:rotate-180 group-hover:text-navy" />
                 </summary>
                 <div className="px-6 pb-6 pt-2">
                   <div className="pl-12">
@@ -323,24 +328,24 @@ const ServicesPage = () => {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════════════
-          CTA SECTION
+          CTA SECTION - Clear Button Hierarchy
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="section-lg relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary" />
+        <div className="absolute inset-0 bg-navy" />
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Ready to Get Started?
             </h2>
-            <p className="text-xl text-primary-foreground/80 mb-10">
+            <p className="text-xl text-steel-300 mb-10">
               Contact our team to discuss your project requirements and get a customized solution.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="btn btn-white btn-xl">
+              <Link to="/contact" className="btn btn-gold btn-xl">
                 Request a Quote
                 <ArrowRight className="h-5 w-5" />
               </Link>
-              <Link to="/projects" className="btn btn-outline btn-xl border-white text-white hover:bg-white hover:text-primary">
+              <Link to="/projects" className="btn btn-ghost btn-xl border-white/30 text-white hover:bg-white/10 hover:border-white/50">
                 View Our Projects
               </Link>
             </div>
