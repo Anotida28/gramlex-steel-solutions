@@ -45,6 +45,13 @@ const ProjectsPage = () => {
     return projects.filter((project) => project.category === activeCategory);
   }, [activeCategory]);
 
+  const splitStatValue = (value) => {
+    const trimmed = String(value).trim();
+    return trimmed.endsWith("+")
+      ? { main: trimmed.slice(0, -1), suffix: "+" }
+      : { main: trimmed, suffix: "" };
+  };
+
   // Get selected project
   const selectedProject = projects.find((project) => project.id === selectedProjectId) ?? null;
 
@@ -121,18 +128,21 @@ const ProjectsPage = () => {
       <section className="relative -mt-16 z-10">
         <div className="container">
           <div className="grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {projectStats.map((stat, index) => (
-              <div 
-                key={stat.label} 
-                className="bg-white rounded-xl shadow-xl p-6 text-center border border-border hover-lift group"
-              >
-                <p className="text-4xl font-bold text-navy mb-2 group-hover:text-gold transition-colors">
-                  {stat.value}
-                  <span className="text-gold">+</span>
-                </p>
-                <p className="text-sm font-medium text-steel-500">{stat.label}</p>
-              </div>
-            ))}
+            {projectStats.map((stat) => {
+              const { main, suffix } = splitStatValue(stat.value);
+              return (
+                <div 
+                  key={stat.label} 
+                  className="bg-white rounded-xl shadow-xl p-6 text-center border border-border hover-lift group"
+                >
+                  <p className="text-4xl font-bold text-navy mb-2 group-hover:text-gold transition-colors">
+                    {main}
+                    {suffix && <span className="text-gold">{suffix}</span>}
+                  </p>
+                  <p className="text-sm font-medium text-steel-500">{stat.label}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -173,11 +183,20 @@ const ProjectsPage = () => {
 
           {/* Project Grid */}
           <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {filteredProjects.map((project, index) => (
+            {filteredProjects.map((project) => (
               <article 
                 key={project.id}
                 className="group cursor-pointer"
+                role="button"
+                tabIndex={0}
+                aria-label={`View ${project.title} project details`}
                 onClick={() => openModal(project.id)}
+                onKeyDown={(event) => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    openModal(project.id);
+                  }
+                }}
               >
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-5">
                   <img

@@ -6,6 +6,7 @@ import { COMPANY } from "@/shared/config/company.js";
 import { navigationLinks, navigationCta } from "@/shared/config/navigation.js";
 
 const brandName = COMPANY.brand.name;
+const primaryPhone = COMPANY.contact?.phones?.[0];
 
 const Navigation = () => {
   const [open, setOpen] = useState(false);
@@ -201,10 +202,10 @@ const Navigation = () => {
         <div className="mt-auto pt-8 border-t border-border">
           <p className="text-sm text-muted-foreground mb-2">Need help?</p>
           <a 
-            href={`tel:${COMPANY.contact?.phone || ""}`}
+            href={primaryPhone ? `tel:${primaryPhone.replace(/\s/g, "")}` : "/contact"}
             className="text-lg font-semibold text-navy hover:text-primary"
           >
-            {COMPANY.contact?.phone || "Contact Us"}
+            {primaryPhone || "Contact Us"}
           </a>
         </div>
       </div>

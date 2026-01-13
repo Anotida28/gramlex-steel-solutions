@@ -8,6 +8,8 @@ import { visualizer } from "rollup-plugin-visualizer";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig(({ mode }) => ({
+  // Set base path for GitHub Pages deployment
+  base: mode === "production" ? "/gramlex-steel-solutions/" : "/",
   server: {
     host: "::",
     port: 8080,

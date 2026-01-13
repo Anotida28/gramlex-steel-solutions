@@ -63,6 +63,13 @@ const timeline = [
   { year: "2024", title: "Industry Leader", description: "Recognized as a trusted infrastructure partner" },
 ];
 
+const splitStatValue = (value) => {
+  const trimmed = String(value).trim();
+  return trimmed.endsWith("+")
+    ? { main: trimmed.slice(0, -1), suffix: "+" }
+    : { main: trimmed, suffix: "" };
+};
+
 const AboutPage = () => {
   return (
     <div className="bg-background route-motion">
@@ -260,18 +267,21 @@ const AboutPage = () => {
 
           {/* Stats Grid */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-16">
-            {COMPANY.stats.map((stat, index) => (
-              <div 
-                key={stat.label} 
-                className="text-center p-8 rounded-2xl bg-navy-lighter/30 border border-white/10"
-              >
-                <p className="text-5xl font-bold text-gold mb-3">
-                  {stat.value}
-                  <span className="text-white">+</span>
-                </p>
-                <p className="text-steel-300 font-medium">{stat.label}</p>
-              </div>
-            ))}
+            {COMPANY.stats.map((stat) => {
+              const { main, suffix } = splitStatValue(stat.value);
+              return (
+                <div 
+                  key={stat.label} 
+                  className="text-center p-8 rounded-2xl bg-navy-lighter/30 border border-white/10"
+                >
+                  <p className="text-5xl font-bold text-gold mb-3">
+                    {main}
+                    {suffix && <span className="text-white">{suffix}</span>}
+                  </p>
+                  <p className="text-steel-300 font-medium">{stat.label}</p>
+                </div>
+              );
+            })}
           </div>
 
           {/* Capabilities & Quality */}

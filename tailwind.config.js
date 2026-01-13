@@ -22,6 +22,16 @@ const config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        navy: {
+          DEFAULT: "hsl(var(--navy))",
+          light: "hsl(var(--navy-light))",
+          lighter: "hsl(var(--navy-lighter))",
+        },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          dark: "hsl(var(--gold-dark))",
+          light: "hsl(var(--gold-light))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -52,9 +62,19 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
         steel: {
-          light: "hsl(var(--steel-light))",
-          medium: "hsl(var(--steel-medium))",
-          dark: "hsl(var(--steel-dark))",
+          50: "hsl(var(--steel-50))",
+          100: "hsl(var(--steel-100))",
+          200: "hsl(var(--steel-200))",
+          300: "hsl(var(--steel-300))",
+          400: "hsl(var(--steel-400))",
+          500: "hsl(var(--steel-500))",
+          600: "hsl(var(--steel-600))",
+          700: "hsl(var(--steel-700))",
+          800: "hsl(var(--steel-800))",
+          900: "hsl(var(--steel-900))",
+          light: "hsl(var(--steel-100))",
+          medium: "hsl(var(--steel-500))",
+          dark: "hsl(var(--steel-900))",
         },
         construction: {
           orange: "hsl(var(--construction-orange))",
@@ -78,16 +98,6 @@ const config = {
         md: "var(--radius-md)",
         sm: "var(--radius-sm)",
       },
-      spacing: {
-        1: "var(--space-1)",
-        2: "var(--space-2)",
-        3: "var(--space-3)",
-        4: "var(--space-4)",
-        5: "var(--space-5)",
-        6: "var(--space-6)",
-        7: "var(--space-7)",
-        8: "var(--space-8)",
-      },
       fontFamily: {
         sans: [
           "Source Sans 3",
@@ -97,11 +107,6 @@ const config = {
           "system-ui",
           "-apple-system",
         ],
-      },
-      fontSize: {
-        sm: "var(--font-size-sm)",
-        base: "var(--font-size-base)",
-        lg: "var(--font-size-lg)",
       },
       backgroundImage: {
         "gradient-primary": "var(--gradient-primary)",

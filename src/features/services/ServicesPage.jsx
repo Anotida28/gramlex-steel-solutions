@@ -227,7 +227,7 @@ const ServicesPage = () => {
                         <div className="space-y-4">
                           <h4 className="flex items-center gap-2.5 text-sm font-bold uppercase tracking-wider text-navy">
                             <span className="h-9 w-9 rounded-lg bg-primary/10 flex items-center justify-center">
-                              <Target className="h-4.5 w-4.5 text-primary" />
+                              <Target className="h-5 w-5 text-primary" />
                             </span>
                             What We Do
                           </h4>
@@ -245,7 +245,7 @@ const ServicesPage = () => {
                         <div className="space-y-4">
                           <h4 className="flex items-center gap-2.5 text-sm font-bold uppercase tracking-wider text-navy">
                             <span className="h-9 w-9 rounded-lg bg-gold/10 flex items-center justify-center">
-                              <Package className="h-4.5 w-4.5 text-gold-dark" />
+                              <Package className="h-5 w-5 text-gold-dark" />
                             </span>
                             Deliverables
                           </h4>
@@ -263,7 +263,7 @@ const ServicesPage = () => {
                         <div className="space-y-4">
                           <h4 className="flex items-center gap-2.5 text-sm font-bold uppercase tracking-wider text-navy">
                             <span className="h-9 w-9 rounded-lg bg-navy/10 flex items-center justify-center">
-                              <Cog className="h-4.5 w-4.5 text-navy" />
+                              <Cog className="h-5 w-5 text-navy" />
                             </span>
                             Process
                           </h4>
