@@ -64,7 +64,7 @@ const Footer = () => {
               />
             </Link>
             <p className="mt-6 text-steel-400 text-sm leading-relaxed">
-              {summary || "Zimbabwe's trusted partner for construction, steel supply, and earthmoving services. Delivering quality and reliability since 2009."}
+              {summary || "Zimbabwe's trusted infrastructure partner — delivering certified steel supply, construction coordination, and earthmoving equipment to the projects that matter most."}
             </p>
             
             {/* Social Links */}
@@ -191,11 +191,11 @@ const Footer = () => {
         <div className="mt-12 py-8 border-t border-navy-lighter">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
-              <h3 className="text-xl font-bold text-white mb-1">Ready to Start Your Project?</h3>
-              <p className="text-steel-400">Get in touch for a free consultation and quote.</p>
+              <h3 className="text-xl font-bold text-white mb-1">Ready to Discuss Your Project?</h3>
+              <p className="text-steel-400">Share your brief — we respond within one business day with a plan and pricing.</p>
             </div>
             <Link to="/contact" className="btn btn-gold">
-              Contact Us Today
+              Request a Quote
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -207,8 +207,7 @@ const Footer = () => {
             © {currentYear} {legalName || "Gramlex Investments (Pvt) Ltd"}. All rights reserved.
           </p>
           <div className="footer-legal">
-            <Link to="/privacy">Privacy Policy</Link>
-            <Link to="/terms">Terms of Service</Link>
+            <Link to="/contact">Contact Us</Link>
           </div>
         </div>
       </div>

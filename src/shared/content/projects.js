@@ -12,7 +12,7 @@ export const projectStats = [
   { value: "500+", label: "Projects delivered (est.)" },
   { value: "50,000+", label: "Tons supplied (est.)" },
   { value: "15+", label: "Years delivering" },
-  { value: "12", label: "Provinces covered" },
+  { value: "10", label: "Provinces served" },
 ];
 
 export const projects = [

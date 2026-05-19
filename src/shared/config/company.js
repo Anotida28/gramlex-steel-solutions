@@ -3,7 +3,7 @@ export const COMPANY = {
     name: "Gramlex Steel Solutions",
     legalName: "Gramlex Investments",
     summary:
-      "Construction delivery, steel & general hardware supply, and earthmoving equipment support for infrastructure teams across Zimbabwe.",
+      "Zimbabwe's trusted infrastructure partner — delivering certified steel supply, construction coordination, and earthmoving equipment to the projects that matter most.",
   },
   contact: {
     phones: ["+263 771 000 111", "+263 774 555 444"],
@@ -27,7 +27,7 @@ export const COMPANY = {
     saturday: "Sat: 08:00 - 13:00",
     emergency: "Emergency support available 24/7",
   },
-  serviceAreas: "Nationwide coverage across Zimbabwe.",
+  serviceAreas: "Nationwide delivery across all 10 provinces of Zimbabwe.",
   social: [
     {
       label: "LinkedIn",
@@ -44,14 +44,14 @@ export const COMPANY = {
   ],
   stats: [
     { value: "15+", label: "Years in operation" },
-    { value: "500+", label: "Projects delivered (est.)" },
-    { value: "50,000+", label: "Tons supplied (est.)" },
-    { value: "35+", label: "Fleet assets (est.)" },
+    { value: "500+", label: "Projects delivered" },
+    { value: "50,000+", label: "Tons of steel supplied" },
+    { value: "35+", label: "Fleet assets deployed" },
   ],
   trustPoints: [
-    { value: "15+ years", label: "Proven delivery" },
-    { value: "500+ projects", label: "National coverage (est.)" },
+    { value: "15+ Years", label: "Proven track record" },
+    { value: "500+ Projects", label: "Delivered nationwide" },
     { value: "24/7", label: "Emergency response" },
-    { value: "QA/QC", label: "Documented safety checks" },
+    { value: "QA/QC", label: "Every batch, every delivery" },
   ],
 };

@@ -5,24 +5,24 @@ export const servicePillars = [
     id: "construction",
     title: "Construction",
     description:
-      "End-to-end delivery support for civil, commercial, and industrial builds with coordinated site logistics.",
-    highlights: ["Project scheduling support", "QA documentation", "Site coordination"],
+      "We take ownership of reinforcement coordination so your programme keeps moving. From bar schedules to pour-ready bundles, every delivery is sequenced to your site.",
+    highlights: ["Project scheduling & sequencing", "QA/QC documentation packs", "On-site coordination & sign-off"],
     icon: Building,
   },
   {
     id: "steel-hardware",
     title: "Steel & General Hardware",
     description:
-      "Reliable supply of reinforcement steel, mesh, and construction hardware with verified mill traceability.",
-    highlights: ["Certified steel supply", "Cutting & bending", "Hardware procurement"],
+      "Certified reinforcement steel and critical hardware — sourced from vetted mills, fabricated to spec, and delivered with full traceability documentation.",
+    highlights: ["Mill-certified reinforcement steel", "Precision cutting & bending", "Hardware & consumables supply"],
     icon: Wrench,
   },
   {
     id: "earthmoving",
     title: "Earthmoving Equipment & Trucks",
     description:
-      "Fleet-backed equipment and haulage to keep earthworks, foundations, and bulk movements on schedule.",
-    highlights: ["Excavation & grading", "Tipper & flatbed fleet", "Operator support"],
+      "Our fleet is ready when yours isn't. Excavators, tippers, low-beds, and experienced operators — mobilised fast and managed safely for the full duration.",
+    highlights: ["Excavation, grading & bulk earthworks", "Tipper, flatbed & low-bed fleet", "Certified operators & safety oversight"],
     icon: Truck,
   },
 ];
@@ -128,21 +128,41 @@ export const serviceFaqs = [
   {
     question: "Can Gramlex support multi-site or phased delivery programmes?",
     answer:
-      "Yes. We align our fabrication and logistics to your pour sequences, providing staggered deliveries and on-site supervision for each phase.",
+      "Yes. We align our fabrication schedules and logistics to your pour sequences, providing staggered deliveries and on-site supervision for each phase. Our team works directly with your site programme to eliminate clashes and avoid downtime between pours.",
   },
   {
     question: "Do you provide mill certificates and QA documentation?",
     answer:
-      "All reinforcement steel shipments include mill certificates, inspection reports, and QA/QC documentation tailored to your compliance requirements.",
+      "Every reinforcement steel shipment includes mill certificates, batch inspection reports, and QA/QC documentation tailored to your compliance requirements. We maintain full traceability from source mill to site, and our documentation packs are formatted to match standard handover requirements.",
   },
   {
     question: "What lead times should we plan for custom fabrication?",
     answer:
-      "Lead times depend on volume and complexity, but we can turn around urgent packages within 48-72 hours once schedules are confirmed.",
+      "Lead times depend on volume and complexity. Standard bending and kitting packages are typically turned around within 3–5 working days. For urgent programmes, we can mobilise priority fabrication slots within 48–72 hours once drawings and schedules are confirmed.",
   },
   {
     question: "Is equipment hire available with operators?",
     answer:
-      "Yes. We provide trained operators and supervisors for earthmoving equipment and haulage operations.",
+      "Yes. All earthmoving equipment is available with trained, safety-certified operators and on-site supervisors. We manage safety inductions, daily reporting, and equipment maintenance so you can focus on your project — not fleet logistics.",
+  },
+  {
+    question: "Do you deliver outside of Harare?",
+    answer:
+      "We deliver across all 10 provinces of Zimbabwe. With our own logistics fleet and established transport partners, we can reach remote sites and tight delivery windows. Contact us with your location and we'll confirm turnaround times for your area.",
+  },
+  {
+    question: "Can you handle both small orders and large-scale supply contracts?",
+    answer:
+      "Yes. We work with contractors ranging from single-building projects to large infrastructure programmes. Whether you need 5 tons for a residential slab or a phased supply contract for a national infrastructure project, our procurement and logistics teams scale to match your volume.",
+  },
+  {
+    question: "What happens if our programme shifts mid-project?",
+    answer:
+      "Schedule changes are a reality on site and we plan for them. Once you notify us of a revised pour sequence, we adjust fabrication slots, reschedule deliveries, and reallocate fleet accordingly — without penalty for reasonable programme changes. Our teams are experienced at absorbing scope shifts without disrupting overall delivery.",
+  },
+  {
+    question: "How do I get a quote?",
+    answer:
+      "Use our contact form or call us directly. For steel and hardware, share your drawing set or bar schedule and we'll price it within one business day. For earthmoving, tell us the scope, site location, and estimated duration. We'll respond with a detailed proposal aligned to your programme.",
   },
 ];

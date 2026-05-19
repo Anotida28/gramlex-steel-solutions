@@ -75,7 +75,7 @@ const AboutPage = () => {
     <div className="bg-background route-motion">
       <Seo
         title="About Gramlex Investments"
-        description="Learn how Gramlex Investments delivers construction, steel & hardware supply, and earthmoving support across Zimbabwe."
+        description="Since 2009, Gramlex Investments has grown into Zimbabwe's most trusted infrastructure partner — delivering certified steel, construction coordination, and earthmoving equipment nationwide."
       />
 
       {/* ══════════════════════════════════════════════════════════════════════
@@ -97,12 +97,12 @@ const AboutPage = () => {
               About Us
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Built to Power Zimbabwe's Infrastructure
+              Built on Integrity. Proven by Delivery.
             </h1>
             <p className="mt-6 text-xl text-steel-300 leading-relaxed max-w-2xl">
-              Since 2009, Gramlex Investments has grown from a steel supply partner into 
-              a multi-disciplinary delivery team for construction, hardware procurement, 
-              and earthmoving operations.
+              Since 2009, Gramlex Investments has grown from a Harare-based steel supplier into
+              Zimbabwe's most capable infrastructure delivery partner — covering construction
+              coordination, certified steel supply, and fleet-backed earthmoving.
             </p>
           </div>
         </div>
@@ -117,18 +117,18 @@ const AboutPage = () => {
             <div>
               <span className="eyebrow">Our Story</span>
               <h2 className="section-title gold-accent mt-4">
-                What Defines Gramlex
+                What Makes Gramlex Different
               </h2>
               <p className="mt-8 text-lg text-steel-600 leading-relaxed">
-                Our teams coordinate steel reinforcement, hardware supply, and fleet 
-                mobilisation with one goal: keep your programme moving without surprises. 
-                From bar schedules to earthworks, we align every handover to your 
-                milestones and compliance standards.
+                We started as a steel supplier and grew by solving the problems most suppliers
+                ignore: poor sequencing, missing documentation, and the phone call that never
+                gets returned when the programme shifts. Today, our teams own the coordination
+                from bar schedules to final handover — so you never have to chase.
               </p>
               <p className="mt-6 text-steel-500 leading-relaxed">
-                We maintain disciplined QA processes, site-ready documentation, and 
-                rapid-response logistics to support urgent schedule changes. The result 
-                is predictable delivery on complex builds.
+                Disciplined QA, site-ready documentation, and a logistics team that absorbs
+                schedule changes — that's the standard we operate to on every project,
+                regardless of size or location.
               </p>
 
               {/* Mission & Vision Cards */}
@@ -137,16 +137,16 @@ const AboutPage = () => {
                   <Target className="h-10 w-10 text-gold mb-4" />
                   <h3 className="text-lg font-bold mb-2">Our Mission</h3>
                   <p className="text-steel-300 text-sm leading-relaxed">
-                    To deliver world-class construction support, steel supply, and 
-                    equipment services that enable Zimbabwe's growth.
+                    To keep Zimbabwe's infrastructure projects on schedule and on budget —
+                    through reliable supply, honest communication, and accountable delivery.
                   </p>
                 </div>
                 <div className="bg-primary rounded-2xl p-6 text-white">
                   <TrendingUp className="h-10 w-10 mb-4 opacity-90" />
                   <h3 className="text-lg font-bold mb-2">Our Vision</h3>
                   <p className="text-primary-foreground/80 text-sm leading-relaxed">
-                    To be the most trusted infrastructure partner in Southern Africa, 
-                    known for reliability and excellence.
+                    To be the partner of first choice for every major infrastructure programme
+                    in Southern Africa — built on a reputation no single delivery ever compromises.
                   </p>
                 </div>
               </div>
@@ -188,9 +188,9 @@ const AboutPage = () => {
         <div className="container">
           <div className="section-header">
             <span className="eyebrow">Our Values</span>
-            <h2 className="section-title">The Principles That Guide Us</h2>
+            <h2 className="section-title">How We Work, Every Day</h2>
             <p className="section-subtitle">
-              Every decision we make is rooted in these core values.
+              Not aspirational statements — the actual standards our teams are held to on every project.
             </p>
           </div>
 
@@ -221,9 +221,9 @@ const AboutPage = () => {
         <div className="container">
           <div className="section-header">
             <span className="eyebrow">Our Journey</span>
-            <h2 className="section-title">15+ Years of Excellence</h2>
+            <h2 className="section-title">15 Years of Earned Trust</h2>
             <p className="section-subtitle">
-              From humble beginnings to industry leadership.
+              Every milestone on this timeline was built on a delivery kept, a programme protected, and a client's confidence retained.
             </p>
           </div>
 
@@ -262,7 +262,7 @@ const AboutPage = () => {
         <div className="container">
           <div className="section-header">
             <span className="eyebrow" style={{ color: "hsl(var(--gold))" }}>By The Numbers</span>
-            <h2 className="section-title">Built for Scale & Precision</h2>
+            <h2 className="section-title">Scale That Speaks for Itself</h2>
           </div>
 
           {/* Stats Grid */}
@@ -332,12 +332,12 @@ const AboutPage = () => {
             <div>
               <span className="eyebrow">Our Reach</span>
               <h2 className="section-title gold-accent mt-4">
-                Nationwide Coverage
+                Wherever Your Project Is, We Can Reach It
               </h2>
               <p className="mt-6 text-lg text-steel-600 leading-relaxed">
-                With operations headquartered in Harare and a network of logistics 
-                partners across all provinces, we deliver materials and equipment 
-                wherever your project needs us.
+                Headquartered in Harare with logistics partners across all 10 provinces,
+                we deliver materials, equipment, and crews to remote sites, tight schedules,
+                and complex staging areas — without making it your problem to organise.
               </p>
               
               <div className="mt-8 flex items-start gap-4 p-6 bg-steel-50 rounded-xl">
@@ -345,7 +345,9 @@ const AboutPage = () => {
                 <div>
                   <h3 className="font-bold text-navy mb-1">Head Office</h3>
                   <p className="text-steel-500">
-                    {COMPANY.contact?.address || "Harare, Zimbabwe"}
+                    {[COMPANY.address?.line1, COMPANY.address?.suburb, COMPANY.address?.city, COMPANY.address?.country]
+                      .filter(Boolean)
+                      .join(", ") || "Harare, Zimbabwe"}
                   </p>
                 </div>
               </div>
@@ -377,11 +379,12 @@ const AboutPage = () => {
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Partner With Us?
+              Let's Build Something Together
             </h2>
             <p className="text-xl text-steel-300 mb-10">
-              Let's discuss how Gramlex can support your next project with 
-              reliable delivery, quality materials, and expert service.
+              Tell us about your next project. Whether it's a bar schedule, an earthworks
+              scope, or a full supply contract — we'll come back with a plan that fits
+              your timeline and your budget.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn btn-gold btn-xl">

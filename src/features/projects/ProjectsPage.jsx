@@ -90,7 +90,7 @@ const ProjectsPage = () => {
     <div className="bg-background route-motion">
       <Seo
         title="Project Portfolio"
-        description="Explore Gramlex Investments projects spanning construction, steel & hardware supply, and earthmoving support across Zimbabwe."
+        description="500+ projects delivered across Zimbabwe — from hospital expansions to mining infrastructure. Explore Gramlex Investments' track record in construction, steel supply, and earthmoving."
       />
 
       {/* ══════════════════════════════════════════════════════════════════════
@@ -112,11 +112,11 @@ const ProjectsPage = () => {
               Our Portfolio
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Delivered Projects Across Zimbabwe
+              Real Projects. Measurable Results.
             </h1>
             <p className="mt-6 text-xl text-steel-300 leading-relaxed max-w-2xl">
-              From mining infrastructure to commercial buildings, we've delivered 
-              materials and equipment for some of Zimbabwe's most demanding projects.
+              Hospitals, mining structures, logistics hubs, road rehabilitation — a track record
+              built on delivering what was promised, when it was promised, with the documentation to prove it.
             </p>
           </div>
         </div>
@@ -154,10 +154,10 @@ const ProjectsPage = () => {
         <div className="container">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-10">
             <div>
-              <span className="eyebrow">Browse Projects</span>
-              <h2 className="section-title mt-3">Filter by Category</h2>
+              <span className="eyebrow">Browse Our Work</span>
+              <h2 className="section-title mt-3">Projects by Category</h2>
               <p className="text-steel-500 mt-2">
-                Explore our work across different sectors and delivery types.
+                Filter by service type to find projects most relevant to what you need.
               </p>
             </div>
             
@@ -384,13 +384,14 @@ const ProjectsPage = () => {
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Have a Project in Mind?
+              Your Project Could Be Next
             </h2>
             <p className="text-xl text-primary-foreground/80 mb-10">
-              Let us help you deliver it on time, on budget, and to the highest standards.
+              Share your scope with us. We'll build a delivery plan around your timeline
+              and come back with pricing within one business day.
             </p>
             <Link to="/contact" className="btn btn-white btn-xl">
-              Start a Conversation
+              Request a Quote
               <ArrowRight className="h-5 w-5" />
             </Link>
           </div>

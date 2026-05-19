@@ -1,21 +1,21 @@
 export const testimonials = [
   {
     quote:
-      "Gramlex kept our hospital expansion on schedule with precise bar scheduling and a responsive site team. Documentation was thorough and always on time.",
+      "Gramlex delivered 3,500 tons of reinforcement across four phases of our hospital expansion without a single sequencing failure. Their bar scheduling was precise, documentation was always ready for the engineer, and the site team responded within hours whenever we needed to adjust. They made a complex programme manageable.",
     name: "Tendai M.",
     role: "Project Manager",
     company: "HealthBuild Zimbabwe",
   },
   {
     quote:
-      "We rely on their steel and hardware supply for critical pours. Deliveries arrive labelled and ready for placement, which saves us days on site.",
+      "We've used several suppliers over the years, but Gramlex is the only one that delivers steel pre-sorted, labelled, and placement-ready. That alone saves us a full day on every pour. The mill certificates are always in order, and they flag potential shortfalls before they become our problem.",
     name: "Nomsa K.",
     role: "Construction Director",
     company: "UrbanCore Developments",
   },
   {
     quote:
-      "The earthmoving crew mobilised quickly and handled heavy haulage with zero downtime. Communication was clear throughout.",
+      "We needed excavators and tippers on-site in 48 hours for a critical drainage package. Gramlex mobilised five machines with operators the next morning. No downtime, no excuses — just professional execution from day one. Their safety reporting was thorough enough to satisfy our client's requirements without any back-and-forth.",
     name: "Farai D.",
     role: "Operations Lead",
     company: "ZimMining Group",

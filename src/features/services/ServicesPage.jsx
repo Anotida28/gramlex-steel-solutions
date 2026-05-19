@@ -35,8 +35,8 @@ const ServicesPage = () => {
   return (
     <div className="bg-background route-motion">
       <Seo
-        title="Services"
-        description="Construction support, steel & hardware supply, and earthmoving equipment delivered by Gramlex Investments."
+        title="Our Services"
+        description="Gramlex Investments delivers certified steel supply, construction coordination, and fleet-backed earthmoving across Zimbabwe. One accountable partner for your entire project."
       />
 
       {/* ══════════════════════════════════════════════════════════════════════
@@ -58,11 +58,11 @@ const ServicesPage = () => {
               Our Services
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Integrated Delivery Across All Project Phases
+              One Partner. Every Phase. No Gaps.
             </h1>
             <p className="mt-6 text-xl text-steel-300 leading-relaxed max-w-2xl">
-              One coordinated team managing procurement, fabrication, fleet mobilisation, 
-              and on-site execution. We deliver what your project needs, when it needs it.
+              Procurement, fabrication, fleet mobilisation, and on-site execution — coordinated
+              by a single team that owns your delivery from first drawing to final sign-off.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link to="/contact" className="btn btn-gold btn-lg">
@@ -83,10 +83,11 @@ const ServicesPage = () => {
       <section className="section-lg">
         <div className="container">
           <AnimatedSection className="section-header">
-            <span className="eyebrow">What We Offer</span>
-            <h2 className="section-title">Three Pillars of Excellence</h2>
+            <span className="eyebrow">Core Capabilities</span>
+            <h2 className="section-title">Three Pillars. One Accountable Team.</h2>
             <p className="section-subtitle">
-              Comprehensive solutions tailored to your construction, steel, and equipment needs.
+              Each capability is designed to remove a specific burden from your programme — so
+              you can focus on building, not chasing suppliers.
             </p>
           </AnimatedSection>
 
@@ -146,9 +147,10 @@ const ServicesPage = () => {
         <div className="container">
           <AnimatedSection className="section-header">
             <span className="eyebrow">How We Work</span>
-            <h2 className="section-title">Our Proven Process</h2>
+            <h2 className="section-title">From Brief to Handover — Five Clear Steps</h2>
             <p className="section-subtitle">
-              A systematic approach ensures quality delivery on every project.
+              No black boxes. Our process is transparent, documented at every stage, and
+              designed to give you full visibility without micromanaging the detail.
             </p>
           </AnimatedSection>
 
@@ -191,10 +193,11 @@ const ServicesPage = () => {
       <section id="services-detail" className="section-lg section-gradient-reverse">
         <div className="container">
           <div className="section-header section-header-left">
-            <span className="eyebrow">In-Depth</span>
-            <h2 className="section-title">Service Details</h2>
+            <span className="eyebrow">Under the Hood</span>
+            <h2 className="section-title">What Each Service Delivers</h2>
             <p className="section-subtitle">
-              Comprehensive breakdown of our capabilities in each service area.
+              A full breakdown of scope, deliverables, and process for each capability — so you
+              know exactly what you're getting before you sign anything.
             </p>
           </div>
 
@@ -294,10 +297,10 @@ const ServicesPage = () => {
       <section className="section-lg section-cool">
         <div className="container container-sm">
           <div className="section-header">
-            <span className="eyebrow">FAQ</span>
-            <h2 className="section-title">Common Questions</h2>
+            <span className="eyebrow">Questions & Answers</span>
+            <h2 className="section-title">Everything You Need to Know</h2>
             <p className="section-subtitle">
-              Answers to frequently asked questions about our services.
+              The questions project managers and procurement teams ask us most — answered honestly.
             </p>
           </div>
 
@@ -335,10 +338,11 @@ const ServicesPage = () => {
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Get Started?
+              Ready to Discuss Your Project?
             </h2>
             <p className="text-xl text-steel-300 mb-10">
-              Contact our team to discuss your project requirements and get a customized solution.
+              Send us your drawings, scope brief, or timeline — we'll respond within one business
+              day with pricing and a delivery plan built around your programme.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact" className="btn btn-gold btn-xl">

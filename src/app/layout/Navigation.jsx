@@ -200,7 +200,7 @@ const Navigation = () => {
 
         {/* Contact Info in Mobile Menu */}
         <div className="mt-auto pt-8 border-t border-border">
-          <p className="text-sm text-muted-foreground mb-2">Need help?</p>
+          <p className="text-sm text-muted-foreground mb-2">Call us directly</p>
           <a 
             href={primaryPhone ? `tel:${primaryPhone.replace(/\s/g, "")}` : "/contact"}
             className="text-lg font-semibold text-navy hover:text-primary"

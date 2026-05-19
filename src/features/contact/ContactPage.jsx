@@ -78,8 +78,8 @@ const ContactPage = () => {
   return (
     <div className="bg-background route-motion">
       <Seo
-        title="Contact"
-        description="Connect with Gramlex Investments for construction, steel & hardware supply, and earthmoving support."
+        title="Contact Us"
+        description="Get a quote from Gramlex Investments for certified steel supply, construction coordination, or earthmoving equipment. We respond within one business day."
       />
 
       {/* ══════════════════════════════════════════════════════════════════════
@@ -101,11 +101,12 @@ const ContactPage = () => {
               Get in Touch
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Let's Plan Your Next Project
+              Tell Us What You Need. We'll Make It Happen.
             </h1>
             <p className="mt-6 text-xl text-steel-300 leading-relaxed max-w-2xl">
-              Share your scope and timelines. We'll coordinate supply, fabrication, 
-              and fleet mobilisation to match your requirements.
+              Share your scope, timeline, or drawings — even a rough brief will do.
+              We'll respond within one business day with a delivery plan and pricing
+              built around your programme.
             </p>
           </div>
         </div>
@@ -124,7 +125,7 @@ const ContactPage = () => {
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold text-navy mb-2">Tell Us About Your Project</h2>
                   <p className="text-steel-500">
-                    We respond within one business day. Provide as much detail as possible for faster estimating.
+                    We respond within one business day. The more detail you share — tonnage, drawings, timelines — the faster we can price it.
                   </p>
                 </div>
 
@@ -136,8 +137,8 @@ const ContactPage = () => {
                   >
                     <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-navy">Message Sent Successfully!</p>
-                      <p className="text-steel-500 text-sm">Our team will contact you within one business day.</p>
+                      <p className="font-semibold text-navy">Enquiry Received — Thank You!</p>
+                      <p className="text-steel-500 text-sm">A member of our team will be in touch within one business day. For urgent requests, call us directly or reach out on WhatsApp.</p>
                     </div>
                   </div>
                 )}
@@ -348,8 +349,8 @@ const ContactPage = () => {
                       <MessageCircle className="h-6 w-6" />
                     </div>
                     <div>
-                      <p className="font-bold text-lg">Chat on WhatsApp</p>
-                      <p className="text-primary-foreground/70 text-sm">Fast responses for urgent requests</p>
+                      <p className="font-bold text-lg">Prefer WhatsApp?</p>
+                      <p className="text-primary-foreground/70 text-sm">Fastest response for urgent site requests</p>
                     </div>
                   </div>
                   <a
@@ -405,10 +406,11 @@ const ContactPage = () => {
       <section className="section-lg section-muted">
         <div className="container">
           <div className="section-header">
-            <span className="eyebrow">Our Location</span>
+            <span className="eyebrow">Find Us</span>
             <h2 className="section-title">Visit Our Head Office</h2>
             <p className="section-subtitle">
-              We welcome site visits, technical workshops, and requests for urgent supply.
+              We welcome site visits, procurement meetings, and urgent walk-in requests.
+              Our team is on site Monday to Friday, 08:00 – 18:00.
             </p>
           </div>
 
