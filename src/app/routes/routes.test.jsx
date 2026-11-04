@@ -27,17 +27,17 @@ describe("App Routes", () => {
 
   it("renders services page at /services", () => {
     renderWithRouter(["/services"]);
-    expect(screen.getByRole("heading", { level: 1, name: /integrated delivery/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: /every phase/i })).toBeInTheDocument();
   });
 
   it("renders projects page at /projects", () => {
     renderWithRouter(["/projects"]);
-    expect(screen.getByRole("heading", { level: 1, name: /portfolio/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: /real projects/i })).toBeInTheDocument();
   });
 
   it("renders contact page at /contact", () => {
     renderWithRouter(["/contact"]);
-    expect(screen.getByRole("heading", { level: 1, name: /delivery/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: /tell us what you need/i })).toBeInTheDocument();
   });
 
   it("renders 404 page for unknown routes", () => {

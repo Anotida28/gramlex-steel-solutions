@@ -14,7 +14,7 @@ import {
   MapPin,
 } from "lucide-react";
 import Seo from "@/components/Seo.jsx";
-import heroImage from "@/assets/hero-construction.jpg";
+import { Photo } from "@/shared/components/Photo.jsx";
 import { COMPANY } from "@/shared/config/company.js";
 
 const values = [
@@ -83,13 +83,11 @@ const AboutPage = () => {
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="relative py-32 lg:py-40 overflow-hidden">
         <div className="absolute inset-0 bg-navy" />
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+        <Photo
+          name="hero-about"
+          priority
+          className="absolute inset-0 opacity-20 block"
+          imgClassName="h-full w-full object-cover"
         />
         <div className="container relative z-10">
           <div className="max-w-3xl">
@@ -155,11 +153,12 @@ const AboutPage = () => {
             {/* Image + Safety Statement */}
             <div className="relative">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden">
-                <img
-                  src={heroImage}
-                  alt="Gramlex team at work"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
+                <Photo
+                  name="about-team"
+                  alt="Site supervisor checking a delivery schedule"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="block h-full w-full"
+                  imgClassName="w-full h-full object-cover"
                 />
               </div>
               

@@ -47,7 +47,7 @@ describe("Accessibility", () => {
 
   it("Navigation toggle button has proper aria attributes", () => {
     const { container } = renderWithProviders(Navigation);
-    const toggleButton = container.querySelector('button[aria-label*="navigation"]');
+    const toggleButton = container.querySelector('button[aria-controls="mobile-navigation"]');
     expect(toggleButton).toBeInTheDocument();
     expect(toggleButton).toHaveAttribute("aria-expanded");
     expect(toggleButton).toHaveAttribute("aria-controls");

@@ -91,7 +91,7 @@ describe("ContactPage", () => {
     await user.click(submitButton);
 
     await waitFor(() => {
-      expect(screen.getByText(/thanks for reaching out/i)).toBeInTheDocument();
+      expect(screen.getByText(/enquiry received/i)).toBeInTheDocument();
     });
   });
 

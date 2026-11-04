@@ -94,7 +94,7 @@ const Footer = () => {
             <h4>Quick Links</h4>
             <ul className="footer-links">
               {quickLinks.map((link) => (
-                <li key={link.to}>
+                <li key={`${link.to}-${link.label}`}>
                   <Link to={link.to} className="inline-flex items-center gap-1 group">
                     <ChevronRight className="h-3 w-3 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
                     {link.label}

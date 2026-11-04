@@ -14,7 +14,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import Seo from "@/components/Seo.jsx";
-import heroImage from "@/assets/hero-construction.jpg";
+import { Photo } from "@/shared/components/Photo.jsx";
 import { COMPANY } from "@/shared/config/company.js";
 
 const {
@@ -68,7 +68,7 @@ const ContactPage = () => {
     }
   }, [errors, setFocus]);
 
-  const onSubmit = async (values) => {
+  const onSubmit = async () => {
     // TODO: Wire up to a backend endpoint when available.
     // Backend developer: implement POST /api/contact with values payload
     setSubmitted(true);
@@ -87,13 +87,11 @@ const ContactPage = () => {
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="relative py-32 lg:py-40 overflow-hidden">
         <div className="absolute inset-0 bg-navy" />
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+        <Photo
+          name="hero-contact"
+          priority
+          className="absolute inset-0 opacity-20 block"
+          imgClassName="h-full w-full object-cover"
         />
         <div className="container relative z-10">
           <div className="max-w-3xl">

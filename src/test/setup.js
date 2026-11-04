@@ -17,3 +17,20 @@ Object.defineProperty(window, "matchMedia", {
 
 // Mock scrollTo
 window.scrollTo = vi.fn();
+
+// Mock IntersectionObserver (not implemented in jsdom)
+class MockIntersectionObserver {
+  constructor(callback) {
+    this.callback = callback;
+  }
+  observe(target) {
+    this.callback([{ isIntersecting: true, target }], this);
+  }
+  unobserve() {}
+  disconnect() {}
+  takeRecords() {
+    return [];
+  }
+}
+window.IntersectionObserver = MockIntersectionObserver;
+globalThis.IntersectionObserver = MockIntersectionObserver;

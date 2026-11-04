@@ -13,7 +13,9 @@ import {
 } from "lucide-react";
 import Seo from "@/components/Seo.jsx";
 import { AnimatedSection } from "@/shared/components/AnimatedSection.jsx";
-import heroImage from "@/assets/hero-construction.jpg";
+import { Photo } from "@/shared/components/Photo.jsx";
+import { PhotoGrid } from "@/shared/components/PhotoGrid.jsx";
+import { onSitePhotos } from "@/shared/content/gallery.js";
 import { COMPANY } from "@/shared/config/company.js";
 import { clientLogos } from "@/shared/content/clients.js";
 import { servicePillars } from "@/shared/content/services.js";
@@ -66,12 +68,11 @@ const HomePage = () => {
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="hero">
         <div className="hero-bg">
-          <img
-            src={heroImage}
-            alt="Construction site with reinforcement steel"
-            loading="eager"
-            decoding="async"
-            fetchPriority="high"
+          <Photo
+            name="hero-home"
+            alt="Tower crane working above a steel-framed building site"
+            priority
+            className="block h-full w-full"
           />
         </div>
         <div className="hero-overlay" aria-hidden="true" />
@@ -134,17 +135,16 @@ const HomePage = () => {
           </AnimatedSection>
 
           <div className="grid gap-6 md:gap-8 lg:grid-cols-3">
-            {servicePillars.map(({ id, icon: Icon, title, description }, index) => {
+            {servicePillars.map(({ id, icon: Icon, title, description, image }, index) => {
               const ServiceIcon = serviceIcons[id] || Icon;
               return (
                 <AnimatedSection key={id} delay={index * 100 + 100}>
-                  <Link to="/services" className="service-card group h-full block">
+                  <Link to="/services" className="service-card group block h-full min-h-[400px]">
                     <div className="service-card-bg">
-                      <img
-                        src={heroImage}
-                        alt=""
-                        loading="lazy"
-                        decoding="async"
+                      <Photo
+                        name={image}
+                        sizes="(min-width: 1024px) 33vw, 100vw"
+                        className="block h-full w-full"
                       />
                     </div>
                     <div className="service-card-overlay" />
@@ -207,11 +207,12 @@ const HomePage = () => {
 
             <AnimatedSection animation="fade-left" className="relative">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden">
-                <img
-                  src={heroImage}
-                  alt="Quality steel fabrication"
-                  className="w-full h-full object-cover"
-                  loading="lazy"
+                <Photo
+                  name="why-gramlex"
+                  alt="Crew member guiding a concrete pump hose on site"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="block h-full w-full"
+                  imgClassName="w-full h-full object-cover"
                 />
               </div>
               {/* Stats Overlay Card */}
@@ -244,12 +245,12 @@ const HomePage = () => {
             {featuredProjects.map((project, index) => (
               <AnimatedSection key={project.id} animation="scale-in" delay={index * 100}>
                 <Link to="/projects" className="project-card block h-full">
-                  <img
-                    src={project.image}
+                  <Photo
+                    name={project.image}
                     alt={project.title}
-                    className="project-card-img"
-                    loading="lazy"
-                    decoding="async"
+                    sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+                    className="block h-full w-full"
+                    imgClassName="project-card-img"
                   />
                   <div className="project-card-overlay" />
                   <div className="project-card-content">
@@ -273,6 +274,24 @@ const HomePage = () => {
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════════════════
+          ON SITE - Photo Gallery
+      ══════════════════════════════════════════════════════════════════════ */}
+      <section className="section-lg">
+        <div className="container">
+          <AnimatedSection className="section-header">
+            <span className="eyebrow">On Site</span>
+            <h2 className="section-title">Steel, Machines, and the People Who Run Them</h2>
+            <p className="section-subtitle">
+              A look at the work behind every delivery — from the mill floor to the
+              final pour. Tap any photo to view it full screen.
+            </p>
+          </AnimatedSection>
+
+          <PhotoGrid photos={onSitePhotos} />
         </div>
       </section>
 
@@ -343,13 +362,10 @@ const HomePage = () => {
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="section-lg relative overflow-hidden">
         <div className="absolute inset-0 bg-navy" />
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+        <Photo
+          name="site-crane"
+          className="absolute inset-0 block opacity-20"
+          imgClassName="h-full w-full object-cover"
         />
         <div className="container relative z-10">
           <AnimatedSection animation="blur-in" className="max-w-3xl mx-auto text-center">

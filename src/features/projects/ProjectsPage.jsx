@@ -1,18 +1,20 @@
 import { useEffect, useMemo, useState } from "react";
+import { createPortal } from "react-dom";
 import { useSearchParams, Link } from "react-router-dom";
 import { 
   MapPin, 
   ArrowRight, 
   X, 
   CheckCircle2, 
-  Calendar,
   Building2,
   Target,
   ChevronLeft,
   ChevronRight,
+  Images,
 } from "lucide-react";
 import Seo from "@/components/Seo.jsx";
-import heroImage from "@/assets/hero-construction.jpg";
+import { Photo } from "@/shared/components/Photo.jsx";
+import { PhotoCarousel } from "@/shared/components/PhotoCarousel.jsx";
 import { projectCategories, projectStats, projects } from "@/shared/content/projects.js";
 
 // Valid category IDs for URL validation
@@ -80,7 +82,8 @@ const ProjectsPage = () => {
   // Close modal on escape
   useEffect(() => {
     const handleEscape = (e) => {
-      if (e.key === "Escape") closeModal();
+      // Let the full-screen photo viewer handle Escape first
+      if (e.key === "Escape" && !document.querySelector(".yarl__root")) closeModal();
     };
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
@@ -98,13 +101,11 @@ const ProjectsPage = () => {
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="relative py-32 lg:py-40 overflow-hidden">
         <div className="absolute inset-0 bg-navy" />
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+        <Photo
+          name="hero-projects"
+          priority
+          className="absolute inset-0 opacity-20 block"
+          imgClassName="h-full w-full object-cover"
         />
         <div className="container relative z-10">
           <div className="max-w-3xl">
@@ -199,13 +200,19 @@ const ProjectsPage = () => {
                 }}
               >
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-5">
-                  <img
-                    src={project.image}
+                  <Photo
+                    name={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                    decoding="async"
+                    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                    className="block h-full w-full"
+                    imgClassName="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
+                  {project.gallery?.length > 1 && (
+                    <span className="absolute left-4 top-4 flex items-center gap-1.5 rounded-full bg-navy/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur">
+                      <Images className="h-3.5 w-3.5" aria-hidden="true" />
+                      {project.gallery.length} photos
+                    </span>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   
                   {/* Overlay Content */}
@@ -252,7 +259,9 @@ const ProjectsPage = () => {
       {/* ══════════════════════════════════════════════════════════════════════
           PROJECT MODAL
       ══════════════════════════════════════════════════════════════════════ */}
-      {isModalOpen && selectedProject && (
+      {/* Portal to <body> so the modal sits above the fixed header
+          (the page wrapper's route animation creates a stacking context). */}
+      {isModalOpen && selectedProject && createPortal(
         <div 
           className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8"
           role="dialog"
@@ -276,38 +285,21 @@ const ProjectsPage = () => {
               <X className="h-5 w-5" />
             </button>
 
-            {/* Navigation Arrows */}
-            <button
-              onClick={() => navigateProject('prev')}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full bg-white shadow-lg flex items-center justify-center text-steel-600 hover:text-navy transition-colors hidden md:flex"
-              aria-label="Previous project"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-            <button
-              onClick={() => navigateProject('next')}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 h-12 w-12 rounded-full bg-white shadow-lg flex items-center justify-center text-steel-600 hover:text-navy transition-colors hidden md:flex"
-              aria-label="Next project"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
+            {/* Project Photo Gallery */}
+            <PhotoCarousel
+              photos={selectedProject.gallery ?? [{ name: selectedProject.image, alt: selectedProject.title }]}
+              aspect="aspect-[16/9] md:aspect-[2/1]"
+              className="overflow-hidden rounded-t-2xl bg-navy"
+            />
 
-            {/* Project Image */}
-            <div className="relative h-72 md:h-96">
-              <img
-                src={selectedProject.image}
-                alt={selectedProject.title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6">
-                <span className="inline-block px-4 py-1.5 bg-gold text-navy text-sm font-bold uppercase tracking-wider rounded-full mb-3">
-                  {selectedProject.category.replace(/-/g, " ")}
-                </span>
-                <h2 id="modal-title" className="text-3xl md:text-4xl font-bold text-white">
-                  {selectedProject.title}
-                </h2>
-              </div>
+            {/* Project Title */}
+            <div className="px-6 pt-8 md:px-10">
+              <span className="inline-block px-4 py-1.5 bg-gold text-navy text-sm font-bold uppercase tracking-wider rounded-full mb-3">
+                {selectedProject.category.replace(/-/g, " ")}
+              </span>
+              <h2 id="modal-title" className="text-3xl md:text-4xl font-bold text-navy">
+                {selectedProject.title}
+              </h2>
             </div>
 
             {/* Project Details */}
@@ -369,11 +361,35 @@ const ProjectsPage = () => {
                     Discuss Your Project
                     <ArrowRight className="h-4 w-4" />
                   </Link>
+
+                  {filteredProjects.length > 1 && (
+                    <div className="grid grid-cols-2 gap-3">
+                      <button
+                        type="button"
+                        onClick={() => navigateProject("prev")}
+                        className="btn btn-outline w-full"
+                        aria-label="Previous project"
+                      >
+                        <ChevronLeft className="h-4 w-4" />
+                        Previous
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => navigateProject("next")}
+                        className="btn btn-outline w-full"
+                        aria-label="Next project"
+                      >
+                        Next
+                        <ChevronRight className="h-4 w-4" />
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
 
       {/* ══════════════════════════════════════════════════════════════════════

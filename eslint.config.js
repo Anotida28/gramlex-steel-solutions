@@ -11,7 +11,7 @@ export default [
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
     languageOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: "latest",
       sourceType: "module",
       globals: globals.browser,
       parserOptions: {
@@ -39,5 +39,13 @@ export default [
         { allowConstantExport: true },
       ],
     },
+  },
+  {
+    files: ["*.config.js"],
+    languageOptions: { globals: globals.node },
+  },
+  {
+    files: ["src/test/**", "**/*.test.{js,jsx}"],
+    languageOptions: { globals: { ...globals.node, ...globals.vitest } },
   },
 ];

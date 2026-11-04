@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import Seo from "@/components/Seo.jsx";
 import { AnimatedSection } from "@/shared/components/AnimatedSection.jsx";
-import heroImage from "@/assets/hero-construction.jpg";
+import { Photo } from "@/shared/components/Photo.jsx";
 import {
   serviceDetails,
   serviceFaqs,
@@ -44,13 +44,11 @@ const ServicesPage = () => {
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="relative py-32 lg:py-40 overflow-hidden">
         <div className="absolute inset-0 bg-navy" />
-        <div 
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: `url(${heroImage})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
+        <Photo
+          name="hero-services"
+          priority
+          className="absolute inset-0 opacity-20 block"
+          imgClassName="h-full w-full object-cover"
         />
         <div className="container relative z-10">
           <div className="max-w-3xl">
@@ -202,17 +200,24 @@ const ServicesPage = () => {
           </div>
 
           <div className="space-y-12 lg:space-y-16">
-            {serviceDetails.map(({ id, icon: Icon, title, summary, whatWeDo, deliverables, process }) => {
+            {serviceDetails.map(({ id, icon: Icon, title, summary, whatWeDo, deliverables, process, image }) => {
               const ServiceIcon = serviceIcons[id] || Icon;
               return (
                 <AnimatedSection key={id}>
                   <div 
                     id={`service-${id}`}
-                    className="scroll-mt-32 bg-white rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+                    className="group scroll-mt-32 bg-white rounded-2xl border border-border overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
                   >
                     {/* Header */}
-                    <div className="bg-navy p-6 lg:p-8">
-                      <div className="flex items-center gap-4">
+                    <div className="relative flex min-h-[220px] items-end overflow-hidden bg-navy p-6 lg:min-h-[280px] lg:p-8">
+                      <Photo
+                        name={image}
+                        sizes="(min-width: 1280px) 1200px, 100vw"
+                        className="absolute inset-0 block"
+                        imgClassName="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/70 to-navy/10" aria-hidden="true" />
+                      <div className="relative flex items-center gap-4">
                         <div className="h-14 w-14 rounded-xl bg-gold flex items-center justify-center flex-shrink-0">
                           <ServiceIcon className="h-7 w-7 text-navy" />
                         </div>

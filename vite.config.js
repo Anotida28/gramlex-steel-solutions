@@ -4,6 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { componentTagger } from "lovable-tagger";
 import { visualizer } from "rollup-plugin-visualizer";
+import { imagetools } from "vite-imagetools";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -18,6 +19,10 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
+    imagetools({
+      // Strip EXIF/metadata and use sensible quality defaults for photos
+      defaultDirectives: () => new URLSearchParams({ quality: "72" }),
+    }),
     mode === "development" && componentTagger(),
     // Generate bundle visualization on production build
     mode === "production" &&

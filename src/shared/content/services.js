@@ -3,6 +3,7 @@ import { Building, Calendar, CheckCircle, FileText, MapPin, Package, Truck, Wren
 export const servicePillars = [
   {
     id: "construction",
+    image: "service-construction",
     title: "Construction",
     description:
       "We take ownership of reinforcement coordination so your programme keeps moving. From bar schedules to pour-ready bundles, every delivery is sequenced to your site.",
@@ -11,6 +12,7 @@ export const servicePillars = [
   },
   {
     id: "steel-hardware",
+    image: "service-steel",
     title: "Steel & General Hardware",
     description:
       "Certified reinforcement steel and critical hardware — sourced from vetted mills, fabricated to spec, and delivered with full traceability documentation.",
@@ -19,6 +21,7 @@ export const servicePillars = [
   },
   {
     id: "earthmoving",
+    image: "service-earthmoving",
     title: "Earthmoving Equipment & Trucks",
     description:
       "Our fleet is ready when yours isn't. Excavators, tippers, low-beds, and experienced operators — mobilised fast and managed safely for the full duration.",
@@ -30,6 +33,7 @@ export const servicePillars = [
 export const serviceDetails = [
   {
     id: "construction",
+    image: "service-construction",
     title: "Construction Delivery",
     summary:
       "A single point of coordination for reinforcement supply, fabrication, and site sequencing across complex builds.",
@@ -52,6 +56,7 @@ export const serviceDetails = [
   },
   {
     id: "steel-hardware",
+    image: "service-steel",
     title: "Steel & General Hardware Supply",
     summary:
       "Certified reinforcement steel and critical hardware sourced, fabricated, and delivered with full traceability.",
@@ -74,6 +79,7 @@ export const serviceDetails = [
   },
   {
     id: "earthmoving",
+    image: "service-earthmoving",
     title: "Earthmoving Equipment & Trucks",
     summary:
       "Earthworks, haulage, and equipment support backed by experienced operators and reliable fleet availability.",
