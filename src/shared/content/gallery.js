@@ -1,3 +1,12 @@
+/** Rotating background photos for the home page hero. */
+export const heroSlides = [
+  { name: "hero-home", alt: "Tower crane working above a steel-framed building site" },
+  { name: "harare-logistics-2", alt: "Sunlight through a new structural steel roof" },
+  { name: "service-earthmoving", alt: "Excavator digging on a cleared site" },
+  { name: "hero-services", alt: "Steelworker at a furnace in a steel mill" },
+  { name: "hero-contact", alt: "Tower cranes against a bright sky" },
+];
+
 /**
  * "On Site" gallery shown on the home page.
  * `span` controls the tile size in the bento grid: "wide" | "tall" | "large" | undefined.

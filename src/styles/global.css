@@ -108,6 +108,10 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Off-screen entrance animations (fade-left/right) must never cause sideways scrolling.
+     `clip` (unlike `hidden`) doesn't create a scroll container, so sticky/fixed still work. */
+  html, body { overflow-x: clip; }
+
   /* Scroll margin for anchor links (accounts for fixed nav) */
   [id] { scroll-margin-top: 100px; }
   
@@ -563,12 +567,97 @@
     position: absolute;
     inset: 0;
     z-index: -2;
+    overflow: hidden; /* keep the Ken Burns zoom from creating scrollable overflow */
   }
 
   .hero-bg img, .hero-bg video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  /* Rotating hero slideshow (HeroSlideshow.jsx) */
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 1.6s ease-in-out;
+  }
+
+  .hero-slide.is-active {
+    opacity: 1;
+    z-index: 1;
+  }
+
+  /* Outgoing slides hold their zoomed state while fading, so there is no jump */
+  .hero-slide img {
+    transform: scale(1.1);
+    transform-origin: center;
+  }
+
+  .hero-slide.is-active img {
+    animation: hero-ken-burns 8s ease-out forwards;
+  }
+
+  @keyframes hero-ken-burns {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+  }
+
+  .hero-slide-controls {
+    position: absolute;
+    left: 2rem;
+    bottom: 2rem;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hero-slide-toggle {
+    display: flex;
+    height: 2rem;
+    width: 2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background: hsl(0 0% 100% / 0.15);
+    color: white;
+    backdrop-filter: blur(6px);
+    transition: background var(--transition-fast);
+  }
+
+  .hero-slide-toggle:hover { background: hsl(0 0% 100% / 0.3); }
+
+  .hero-slide-dot {
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 9999px;
+    background: hsl(0 0% 100% / 0.5);
+    transition: all var(--transition-base);
+  }
+
+  .hero-slide-dot:hover { background: hsl(0 0% 100% / 0.8); }
+
+  .hero-slide-dot.is-active {
+    width: 1.75rem;
+    background: hsl(var(--gold));
+  }
+
+  .hero-slide-toggle:focus-visible,
+  .hero-slide-dot:focus-visible {
+    outline: 2px solid hsl(var(--gold));
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 640px) {
+    .hero-slide-controls { left: 1rem; bottom: 1.25rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-slide { transition: none; }
+    .hero-slide img,
+    .hero-slide.is-active img { animation: none; transform: none; }
   }
 
   .hero-overlay {

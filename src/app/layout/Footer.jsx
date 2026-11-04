@@ -58,7 +58,7 @@ const Footer = () => {
               <img
                 src={logo}
                 alt={`${brandName} logo`}
-                className="h-12 w-auto brightness-0 invert"
+                className="h-12 w-auto"
                 loading="lazy"
                 decoding="async"
               />

@@ -15,7 +15,8 @@ import Seo from "@/components/Seo.jsx";
 import { AnimatedSection } from "@/shared/components/AnimatedSection.jsx";
 import { Photo } from "@/shared/components/Photo.jsx";
 import { PhotoGrid } from "@/shared/components/PhotoGrid.jsx";
-import { onSitePhotos } from "@/shared/content/gallery.js";
+import { heroSlides, onSitePhotos } from "@/shared/content/gallery.js";
+import { HeroSlideshow } from "@/shared/components/HeroSlideshow.jsx";
 import { COMPANY } from "@/shared/config/company.js";
 import { clientLogos } from "@/shared/content/clients.js";
 import { servicePillars } from "@/shared/content/services.js";
@@ -67,22 +68,10 @@ const HomePage = () => {
           HERO SECTION - Cinematic Full-Screen
       ══════════════════════════════════════════════════════════════════════ */}
       <section className="hero">
-        <div className="hero-bg">
-          <Photo
-            name="hero-home"
-            alt="Tower crane working above a steel-framed building site"
-            priority
-            className="block h-full w-full"
-          />
-        </div>
+        <HeroSlideshow slides={heroSlides} />
         <div className="hero-overlay" aria-hidden="true" />
         
         <div className="hero-content">
-          <span className="hero-eyebrow animate-in" data-delay="100">
-            <Award className="h-4 w-4" />
-            Zimbabwe's Trusted Infrastructure Partner Since 2009
-          </span>
-
           <h1 className="hero-title animate-in" data-delay="200">
             Steel. Equipment. Delivery. <span>Done Right.</span>
           </h1>
