@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Seo from "@/components/Seo.jsx";
 import { Photo } from "@/shared/components/Photo.jsx";
+import { SteelTag } from "@/shared/components/SteelTag.jsx";
 import { PhotoCarousel } from "@/shared/components/PhotoCarousel.jsx";
 import { projectCategories, projectStats, projects } from "@/shared/content/projects.js";
 
@@ -90,7 +91,7 @@ const ProjectsPage = () => {
   }, []);
 
   return (
-    <div className="bg-background route-motion">
+    <div className="bg-background">
       <Seo
         title="Project Portfolio"
         description="500+ projects delivered across Zimbabwe — from hospital expansions to mining infrastructure. Explore Gramlex Investments' track record in construction, steel supply, and earthmoving."
@@ -109,11 +110,11 @@ const ProjectsPage = () => {
         />
         <div className="container relative z-10">
           <div className="max-w-3xl">
-            <span className="eyebrow" style={{ color: "hsl(var(--gold))" }}>
+            <span className="eyebrow eyebrow--on-dark">
               Our Portfolio
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Real Projects. Measurable Results.
+              Real projects. Measurable results.
             </h1>
             <p className="mt-6 text-xl text-steel-300 leading-relaxed max-w-2xl">
               Hospitals, mining structures, logistics hubs, road rehabilitation — a track record
@@ -134,11 +135,11 @@ const ProjectsPage = () => {
               return (
                 <div 
                   key={stat.label} 
-                  className="bg-white rounded-xl shadow-xl p-6 text-center border border-border hover-lift group"
+                  className="bg-white rounded-md shadow-xl p-6 text-center border border-border hover-lift group"
                 >
-                  <p className="text-4xl font-bold text-navy mb-2 group-hover:text-gold transition-colors">
+                  <p className="font-mono text-4xl font-medium tracking-tight text-navy mb-2 group-hover:text-brand-dark transition-colors">
                     {main}
-                    {suffix && <span className="text-gold">{suffix}</span>}
+                    {suffix && <span className="text-brand-dark">{suffix}</span>}
                   </p>
                   <p className="text-sm font-medium text-steel-500">{stat.label}</p>
                 </div>
@@ -156,7 +157,7 @@ const ProjectsPage = () => {
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-10">
             <div>
               <span className="eyebrow">Browse Our Work</span>
-              <h2 className="section-title mt-3">Projects by Category</h2>
+              <h2 className="section-title mt-3">Projects by category</h2>
               <p className="text-steel-500 mt-2">
                 Filter by service type to find projects most relevant to what you need.
               </p>
@@ -199,7 +200,7 @@ const ProjectsPage = () => {
                   }
                 }}
               >
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-5">
+                <div className="relative aspect-[4/3] rounded-md overflow-hidden">
                   <Photo
                     name={project.image}
                     alt={project.title}
@@ -216,11 +217,11 @@ const ProjectsPage = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-navy/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
                   
                   {/* Overlay Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <span className="inline-block px-3 py-1 bg-gold text-navy text-xs font-bold uppercase tracking-wider rounded-full mb-3">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 pb-8">
+                    <span className="inline-block px-3 py-1 bg-brand text-navy text-xs font-bold uppercase tracking-wider rounded-full mb-3">
                       {project.category.replace(/-/g, " ")}
                     </span>
-                    <h3 className="text-xl font-bold text-white group-hover:text-gold transition-colors">
+                    <h3 className="text-xl font-bold text-white group-hover:text-brand transition-colors">
                       {project.title}
                     </h3>
                     <div className="flex items-center gap-2 mt-2 text-steel-300 text-sm">
@@ -238,6 +239,13 @@ const ProjectsPage = () => {
                   </div>
                 </div>
 
+                {project.schedule && (
+                  <SteelTag
+                    mark={project.schedule.mark}
+                    items={project.schedule.rows}
+                    className="relative z-10 -mt-4 ml-4 mb-4"
+                  />
+                )}
                 <p className="text-steel-600 leading-relaxed line-clamp-2">
                   {project.summary}
                 </p>
@@ -275,7 +283,7 @@ const ProjectsPage = () => {
           />
           
           {/* Modal Content */}
-          <div className="relative bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+          <div className="relative bg-white rounded-md max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
             {/* Close Button */}
             <button
               onClick={closeModal}
@@ -294,7 +302,7 @@ const ProjectsPage = () => {
 
             {/* Project Title */}
             <div className="px-6 pt-8 md:px-10">
-              <span className="inline-block px-4 py-1.5 bg-gold text-navy text-sm font-bold uppercase tracking-wider rounded-full mb-3">
+              <span className="inline-block px-4 py-1.5 bg-brand text-navy text-sm font-bold uppercase tracking-wider rounded-full mb-3">
                 {selectedProject.category.replace(/-/g, " ")}
               </span>
               <h2 id="modal-title" className="text-3xl md:text-4xl font-bold text-navy">
@@ -302,17 +310,17 @@ const ProjectsPage = () => {
               </h2>
             </div>
 
-            {/* Project Details */}
+            {/* Project details */}
             <div className="p-6 md:p-10">
               <div className="grid gap-8 md:grid-cols-3">
                 {/* Main Info */}
                 <div className="md:col-span-2">
-                  <h3 className="text-lg font-bold text-navy mb-4">Project Overview</h3>
+                  <h3 className="text-lg font-bold text-navy mb-4">Project overview</h3>
                   <p className="text-steel-600 leading-relaxed mb-6">
                     {selectedProject.summary}
                   </p>
                   
-                  <div className="bg-steel-50 rounded-xl p-6 mb-6">
+                  <div className="bg-steel-50 rounded-md p-6 mb-6">
                     <h4 className="flex items-center gap-2 font-bold text-navy mb-3">
                       <Target className="h-5 w-5 text-primary" />
                       Result Achieved
@@ -320,7 +328,7 @@ const ProjectsPage = () => {
                     <p className="text-steel-600">{selectedProject.result}</p>
                   </div>
 
-                  <h4 className="font-bold text-navy mb-4">Scope Delivered</h4>
+                  <h4 className="font-bold text-navy mb-4">Scope delivered</h4>
                   <ul className="grid gap-3 sm:grid-cols-2">
                     {selectedProject.scope.map((item) => (
                       <li key={item} className="flex items-start gap-3 text-steel-600">
@@ -333,18 +341,18 @@ const ProjectsPage = () => {
 
                 {/* Sidebar */}
                 <div className="space-y-6">
-                  <div className="bg-navy rounded-xl p-6 text-white">
-                    <h4 className="font-bold mb-4 text-gold">Project Details</h4>
+                  <div className="bg-navy rounded-md p-6 text-white">
+                    <h4 className="font-bold mb-4 text-brand">Project details</h4>
                     <div className="space-y-4 text-sm">
                       <div className="flex items-center gap-3">
-                        <MapPin className="h-5 w-5 text-gold" />
+                        <MapPin className="h-5 w-5 text-brand" />
                         <div>
                           <p className="text-steel-400 text-xs">Location</p>
                           <p className="font-medium">{selectedProject.location}</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
-                        <Building2 className="h-5 w-5 text-gold" />
+                        <Building2 className="h-5 w-5 text-brand" />
                         <div>
                           <p className="text-steel-400 text-xs">Category</p>
                           <p className="font-medium capitalize">{selectedProject.category.replace(/-/g, " ")}</p>
@@ -358,7 +366,7 @@ const ProjectsPage = () => {
                     className="btn btn-primary w-full"
                     onClick={closeModal}
                   >
-                    Discuss Your Project
+                    Ask about a similar project
                     <ArrowRight className="h-4 w-4" />
                   </Link>
 
@@ -400,14 +408,14 @@ const ProjectsPage = () => {
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Your Project Could Be Next
+              Have drawings? Get a price within one business day
             </h2>
             <p className="text-xl text-primary-foreground/80 mb-10">
               Share your scope with us. We'll build a delivery plan around your timeline
               and come back with pricing within one business day.
             </p>
             <Link to="/contact" className="btn btn-white btn-xl">
-              Request a Quote
+              Send drawings for a quote
               <ArrowRight className="h-5 w-5" />
             </Link>
           </div>

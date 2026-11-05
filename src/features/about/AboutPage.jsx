@@ -19,22 +19,22 @@ import { COMPANY } from "@/shared/config/company.js";
 
 const values = [
   {
-    title: "Integrity in Delivery",
+    title: "Integrity in delivery",
     description: "Transparent schedules, clear reporting, and accountability at every milestone.",
     icon: Handshake,
   },
   {
-    title: "Technical Excellence",
+    title: "Technical excellence",
     description: "Engineering-led planning backed by qualified fabrication and site supervision.",
     icon: Factory,
   },
   {
-    title: "Safety & Quality",
+    title: "Safety & quality",
     description: "SHEQ-aligned procedures that protect teams, assets, and project outcomes.",
     icon: ShieldCheck,
   },
   {
-    title: "Client Partnership",
+    title: "Client partnership",
     description: "Responsive teams that adapt when schedules shift or scope expands.",
     icon: Users,
   },
@@ -56,11 +56,11 @@ const qualityCommitments = [
 ];
 
 const timeline = [
-  { year: "2009", title: "Company Founded", description: "Started as a steel supply partner in Harare" },
-  { year: "2012", title: "Expanded Services", description: "Added construction support and hardware supply" },
-  { year: "2016", title: "Fleet Growth", description: "Launched earthmoving equipment division" },
-  { year: "2020", title: "National Coverage", description: "Expanded operations across all provinces" },
-  { year: "2024", title: "Industry Leader", description: "Recognized as a trusted infrastructure partner" },
+  { year: "2009", title: "Company founded", description: "Started as a steel supply partner in Harare" },
+  { year: "2012", title: "Expanded services", description: "Added construction support and hardware supply" },
+  { year: "2016", title: "Fleet growth", description: "Launched earthmoving equipment division" },
+  { year: "2020", title: "National coverage", description: "Expanded operations across all provinces" },
+  { year: "2024", title: "Industry leader", description: "Recognized as a trusted infrastructure partner" },
 ];
 
 const splitStatValue = (value) => {
@@ -72,7 +72,7 @@ const splitStatValue = (value) => {
 
 const AboutPage = () => {
   return (
-    <div className="bg-background route-motion">
+    <div className="bg-background">
       <Seo
         title="About Gramlex Investments"
         description="Since 2009, Gramlex Investments has grown into Zimbabwe's most trusted infrastructure partner — delivering certified steel, construction coordination, and earthmoving equipment nationwide."
@@ -91,11 +91,11 @@ const AboutPage = () => {
         />
         <div className="container relative z-10">
           <div className="max-w-3xl">
-            <span className="eyebrow" style={{ color: "hsl(var(--gold))" }}>
+            <span className="eyebrow eyebrow--on-dark">
               About Us
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Built on Integrity. Proven by Delivery.
+              Built on integrity. Proven by delivery.
             </h1>
             <p className="mt-6 text-xl text-steel-300 leading-relaxed max-w-2xl">
               Since 2009, Gramlex Investments has grown from a Harare-based steel supplier into
@@ -114,8 +114,8 @@ const AboutPage = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
               <span className="eyebrow">Our Story</span>
-              <h2 className="section-title gold-accent mt-4">
-                What Makes Gramlex Different
+              <h2 className="section-title brand-accent mt-4">
+                What makes Gramlex different
               </h2>
               <p className="mt-8 text-lg text-steel-600 leading-relaxed">
                 We started as a steel supplier and grew by solving the problems most suppliers
@@ -131,17 +131,17 @@ const AboutPage = () => {
 
               {/* Mission & Vision Cards */}
               <div className="mt-10 grid gap-6 sm:grid-cols-2">
-                <div className="bg-navy rounded-2xl p-6 text-white">
-                  <Target className="h-10 w-10 text-gold mb-4" />
-                  <h3 className="text-lg font-bold mb-2">Our Mission</h3>
+                <div className="bg-navy rounded-md p-6 text-white">
+                  <Target className="h-10 w-10 text-brand mb-4" />
+                  <h3 className="text-lg font-bold mb-2">Our mission</h3>
                   <p className="text-steel-300 text-sm leading-relaxed">
                     To keep Zimbabwe's infrastructure projects on schedule and on budget —
                     through reliable supply, honest communication, and accountable delivery.
                   </p>
                 </div>
-                <div className="bg-primary rounded-2xl p-6 text-white">
+                <div className="bg-primary rounded-md p-6 text-white">
                   <TrendingUp className="h-10 w-10 mb-4 opacity-90" />
-                  <h3 className="text-lg font-bold mb-2">Our Vision</h3>
+                  <h3 className="text-lg font-bold mb-2">Our vision</h3>
                   <p className="text-primary-foreground/80 text-sm leading-relaxed">
                     To be the partner of first choice for every major infrastructure programme
                     in Southern Africa — built on a reputation no single delivery ever compromises.
@@ -152,7 +152,7 @@ const AboutPage = () => {
 
             {/* Image + Safety Statement */}
             <div className="relative">
-              <div className="aspect-[4/5] rounded-2xl overflow-hidden">
+              <div className="aspect-[4/5] rounded-md overflow-hidden">
                 <Photo
                   name="about-team"
                   alt="Site supervisor checking a delivery schedule"
@@ -163,12 +163,12 @@ const AboutPage = () => {
               </div>
               
               {/* Safety Statement Card */}
-              <div className="absolute -bottom-8 -left-8 max-w-sm bg-white rounded-2xl shadow-2xl p-6 border border-border">
+              <div className="absolute -bottom-8 -left-8 max-w-sm bg-white rounded-md shadow-2xl p-6 border border-border">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="h-12 w-12 rounded-xl bg-gold/10 flex items-center justify-center">
-                    <ClipboardCheck className="h-6 w-6 text-gold-dark" />
+                  <div className="h-12 w-12 rounded-md bg-brand/10 flex items-center justify-center">
+                    <ClipboardCheck className="h-6 w-6 text-brand-dark" />
                   </div>
-                  <h3 className="font-bold text-navy">Safety & Quality</h3>
+                  <h3 className="font-bold text-navy">Safety & quality</h3>
                 </div>
                 <p className="text-sm text-steel-500 leading-relaxed">
                   We operate SHEQ-aligned workflows, verifying every batch through 
@@ -187,26 +187,23 @@ const AboutPage = () => {
         <div className="container">
           <div className="section-header">
             <span className="eyebrow">Our Values</span>
-            <h2 className="section-title">How We Work, Every Day</h2>
+            <h2 className="section-title">How we work, every day</h2>
             <p className="section-subtitle">
               Not aspirational statements — the actual standards our teams are held to on every project.
             </p>
           </div>
 
           <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {values.map(({ title, description, icon: Icon }, index) => (
+            {values.map(({ title, description, icon: Icon }) => (
               <div 
                 key={title} 
-                className="relative bg-white rounded-2xl p-6 lg:p-7 border border-border shadow-sm hover-lift card-glow group"
+                className="relative bg-white rounded-md p-6 lg:p-7 border border-border shadow-sm hover-lift group"
               >
-                <div className="h-12 w-12 rounded-xl bg-navy/5 flex items-center justify-center text-navy group-hover:bg-navy group-hover:text-gold transition-all mb-4">
+                <div className="h-12 w-12 rounded-md bg-navy/5 flex items-center justify-center text-navy group-hover:bg-navy group-hover:text-brand transition-all mb-4">
                   <Icon className="h-6 w-6" />
                 </div>
                 <h3 className="text-lg font-bold text-navy mb-2">{title}</h3>
                 <p className="text-steel-500 text-[0.9375rem] leading-relaxed">{description}</p>
-                <span className="absolute top-5 right-5 text-5xl font-bold text-steel-100 group-hover:text-steel-200 transition-colors">
-                  {String(index + 1).padStart(2, '0')}
-                </span>
               </div>
             ))}
           </div>
@@ -220,7 +217,7 @@ const AboutPage = () => {
         <div className="container">
           <div className="section-header">
             <span className="eyebrow">Our Journey</span>
-            <h2 className="section-title">15 Years of Earned Trust</h2>
+            <h2 className="section-title">15 years of earned trust</h2>
             <p className="section-subtitle">
               Every milestone on this timeline was built on a delivery kept, a programme protected, and a client's confidence retained.
             </p>
@@ -260,8 +257,8 @@ const AboutPage = () => {
       <section className="section-lg section-dark">
         <div className="container">
           <div className="section-header">
-            <span className="eyebrow" style={{ color: "hsl(var(--gold))" }}>By The Numbers</span>
-            <h2 className="section-title">Scale That Speaks for Itself</h2>
+            <span className="eyebrow eyebrow--on-dark">By The Numbers</span>
+            <h2 className="section-title">What 15 years of deliveries add up to</h2>
           </div>
 
           {/* Stats Grid */}
@@ -271,9 +268,9 @@ const AboutPage = () => {
               return (
                 <div 
                   key={stat.label} 
-                  className="text-center p-8 rounded-2xl bg-navy-lighter/30 border border-white/10"
+                  className="text-center p-8 rounded-md bg-navy-lighter/30 border border-white/10"
                 >
-                  <p className="text-5xl font-bold text-gold mb-3">
+                  <p className="font-mono text-5xl font-medium tracking-tight text-brand mb-3">
                     {main}
                     {suffix && <span className="text-white">{suffix}</span>}
                   </p>
@@ -285,12 +282,12 @@ const AboutPage = () => {
 
           {/* Capabilities & Quality */}
           <div className="grid gap-8 lg:grid-cols-2">
-            <div className="bg-white rounded-2xl p-8 text-foreground">
+            <div className="bg-white rounded-md p-8 text-foreground">
               <div className="flex items-center gap-3 mb-6">
-                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                <div className="h-12 w-12 rounded-md bg-primary/10 flex items-center justify-center">
                   <Factory className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-navy">Our Capabilities</h3>
+                <h3 className="text-2xl font-bold text-navy">Our capabilities</h3>
               </div>
               <ul className="space-y-4">
                 {capabilities.map((capability) => (
@@ -302,17 +299,17 @@ const AboutPage = () => {
               </ul>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 text-foreground">
+            <div className="bg-white rounded-md p-8 text-foreground">
               <div className="flex items-center gap-3 mb-6">
-                <div className="h-12 w-12 rounded-xl bg-gold/10 flex items-center justify-center">
-                  <Award className="h-6 w-6 text-gold-dark" />
+                <div className="h-12 w-12 rounded-md bg-brand/10 flex items-center justify-center">
+                  <Award className="h-6 w-6 text-brand-dark" />
                 </div>
-                <h3 className="text-2xl font-bold text-navy">Quality Commitments</h3>
+                <h3 className="text-2xl font-bold text-navy">Quality commitments</h3>
               </div>
               <ul className="space-y-4">
                 {qualityCommitments.map((item) => (
                   <li key={item} className="flex items-center gap-3 text-steel-600">
-                    <CheckCircle2 className="h-5 w-5 text-gold flex-shrink-0" />
+                    <CheckCircle2 className="h-5 w-5 text-brand-dark flex-shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -330,8 +327,8 @@ const AboutPage = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
               <span className="eyebrow">Our Reach</span>
-              <h2 className="section-title gold-accent mt-4">
-                Wherever Your Project Is, We Can Reach It
+              <h2 className="section-title brand-accent mt-4">
+                Wherever your project is, we can reach it
               </h2>
               <p className="mt-6 text-lg text-steel-600 leading-relaxed">
                 Headquartered in Harare with logistics partners across all 10 provinces,
@@ -339,10 +336,10 @@ const AboutPage = () => {
                 and complex staging areas — without making it your problem to organise.
               </p>
               
-              <div className="mt-8 flex items-start gap-4 p-6 bg-steel-50 rounded-xl">
+              <div className="mt-8 flex items-start gap-4 p-6 bg-steel-50 rounded-md">
                 <MapPin className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                 <div>
-                  <h3 className="font-bold text-navy mb-1">Head Office</h3>
+                  <h3 className="font-bold text-navy mb-1">Head office</h3>
                   <p className="text-steel-500">
                     {[COMPANY.address?.line1, COMPANY.address?.suburb, COMPANY.address?.city, COMPANY.address?.country]
                       .filter(Boolean)
@@ -353,14 +350,14 @@ const AboutPage = () => {
 
               <div className="mt-8">
                 <Link to="/contact" className="btn btn-primary btn-lg">
-                  Get in Touch
+                  Talk to our team
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
             </div>
 
-            <div className="bg-navy rounded-2xl p-10 text-center">
-              <p className="text-7xl font-bold text-gold mb-4">10</p>
+            <div className="bg-navy rounded-md p-10 text-center">
+              <p className="font-mono text-7xl font-medium tracking-tight text-brand mb-4">10</p>
               <p className="text-xl text-white font-semibold mb-2">Provinces Served</p>
               <p className="text-steel-400">
                 Rapid delivery and mobilisation across Zimbabwe
@@ -378,7 +375,7 @@ const AboutPage = () => {
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Let's Build Something Together
+              Send drawings, get a plan that fits your programme
             </h2>
             <p className="text-xl text-steel-300 mb-10">
               Tell us about your next project. Whether it's a bar schedule, an earthworks
@@ -386,12 +383,12 @@ const AboutPage = () => {
               your timeline and your budget.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="btn btn-gold btn-xl">
-                Contact Our Team
+              <Link to="/contact" className="btn btn-brand btn-xl">
+                Send drawings for a quote
                 <ArrowRight className="h-5 w-5" />
               </Link>
               <Link to="/services" className="btn btn-ghost btn-xl border-white/30 text-white hover:bg-white/10 hover:border-white/50">
-                Explore Services
+                See what we deliver
               </Link>
             </div>
           </div>

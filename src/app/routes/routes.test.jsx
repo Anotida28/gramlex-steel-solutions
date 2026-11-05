@@ -27,7 +27,7 @@ describe("App Routes", () => {
 
   it("renders services page at /services", () => {
     renderWithRouter(["/services"]);
-    expect(screen.getByRole("heading", { level: 1, name: /every phase/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: /placement-ready/i })).toBeInTheDocument();
   });
 
   it("renders projects page at /projects", () => {
