@@ -92,7 +92,7 @@ export function PhotoCarousel({ photos, className, aspect = "aspect-[16/9]" }) {
                 onClick={() => emblaApi?.scrollTo(index)}
                 className={cn(
                   "h-2 rounded-full transition-all",
-                  index === selected ? "w-6 bg-gold" : "w-2 bg-white/70 hover:bg-white",
+                  index === selected ? "w-6 bg-brand" : "w-2 bg-white/70 hover:bg-white",
                 )}
                 aria-label={`Go to photo ${index + 1}`}
                 aria-current={index === selected}

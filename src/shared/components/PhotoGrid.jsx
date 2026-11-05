@@ -30,14 +30,12 @@ export function PhotoGrid({ photos, className }) {
         {photos.map((item, i) => (
           <AnimatedSection
             key={item.name}
-            animation="scale-in"
-            delay={Math.min((i % 4) * 100 + 100, 400)}
             className={cn("relative", spanClasses[item.span])}
           >
             <button
               type="button"
               onClick={() => setIndex(i)}
-              className="group relative block h-full w-full cursor-zoom-in overflow-hidden rounded-2xl bg-steel-100 focus:outline-none focus-visible:ring-4 focus-visible:ring-gold/60"
+              className="group relative block h-full w-full cursor-zoom-in overflow-hidden rounded-md bg-steel-100 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand/60"
               aria-label={`View photo: ${item.alt}`}
             >
               <Photo

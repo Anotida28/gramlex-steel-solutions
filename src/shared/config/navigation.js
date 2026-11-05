@@ -8,5 +8,5 @@ export const navigationLinks = [
 
 export const navigationCta = {
   to: "/contact",
-  label: "Request a Quote",
+  label: "Get a quote",
 };

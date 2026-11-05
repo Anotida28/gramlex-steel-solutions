@@ -89,9 +89,9 @@ const Footer = () => {
             )}
           </div>
 
-          {/* Quick Links Column */}
+          {/* Quick links Column */}
           <div className="footer-column">
-            <h4>Quick Links</h4>
+            <h4>Quick links</h4>
             <ul className="footer-links">
               {quickLinks.map((link) => (
                 <li key={`${link.to}-${link.label}`}>
@@ -131,7 +131,7 @@ const Footer = () => {
                       <a 
                         key={phone} 
                         href={`tel:${phone.replace(/\s/g, '')}`}
-                        className="block hover:text-gold transition-colors"
+                        className="block hover:text-brand transition-colors"
                       >
                         {phone}
                       </a>
@@ -148,7 +148,7 @@ const Footer = () => {
                       <a 
                         key={email} 
                         href={`mailto:${email}`}
-                        className="block hover:text-gold transition-colors"
+                        className="block hover:text-brand transition-colors"
                       >
                         {email}
                       </a>
@@ -172,11 +172,11 @@ const Footer = () => {
               )}
             </div>
 
-            {/* Operating Hours */}
+            {/* Operating hours */}
             {(hours.weekdays || hours.saturday) && (
               <div className="mt-6 pt-6 border-t border-navy-lighter">
                 <p className="text-xs font-semibold uppercase tracking-wider text-steel-500 mb-3">
-                  Operating Hours
+                  Operating hours
                 </p>
                 <div className="space-y-1 text-sm text-steel-400">
                   {hours.weekdays && <p>{hours.weekdays}</p>}
@@ -191,11 +191,11 @@ const Footer = () => {
         <div className="mt-12 py-8 border-t border-navy-lighter">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
-              <h3 className="text-xl font-bold text-white mb-1">Ready to Discuss Your Project?</h3>
+              <h3 className="text-xl font-bold text-white mb-1">Ready to discuss your project?</h3>
               <p className="text-steel-400">Share your brief — we respond within one business day with a plan and pricing.</p>
             </div>
-            <Link to="/contact" className="btn btn-gold">
-              Request a Quote
+            <Link to="/contact" className="btn btn-brand">
+              Send drawings for a quote
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
