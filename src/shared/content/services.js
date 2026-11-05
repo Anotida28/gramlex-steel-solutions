@@ -34,7 +34,7 @@ export const serviceDetails = [
   {
     id: "construction",
     image: "service-construction",
-    title: "Construction Delivery",
+    title: "Construction delivery",
     summary:
       "A single point of coordination for reinforcement supply, fabrication, and site sequencing across complex builds.",
     icon: Building,
@@ -105,26 +105,31 @@ export const serviceDetails = [
 export const serviceProcess = [
   {
     title: "Site visit",
+    when: "Day 1",
     description: "Confirm scope, access, and safety requirements at the project location.",
     icon: MapPin,
   },
   {
     title: "Quote",
+    when: "Within 1 business day",
     description: "Detailed pricing and timelines aligned to your program and drawings.",
     icon: FileText,
   },
   {
     title: "Schedule",
+    when: "On approval",
     description: "Fabrication and fleet mobilisation planned around pour sequences.",
     icon: Calendar,
   },
   {
     title: "Deliver",
+    when: "Before each pour",
     description: "Materials, equipment, and crews deployed with QA controls in place.",
     icon: Truck,
   },
   {
     title: "Handover",
+    when: "At close-out",
     description: "Documentation, compliance checks, and close-out reporting.",
     icon: CheckCircle,
   },

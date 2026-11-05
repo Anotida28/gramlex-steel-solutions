@@ -1,3 +1,5 @@
+// DEMO CONTENT: names are placeholders. Replace with real, approved quotes (full name,
+// role, company) and link each to the project it describes via projectId.
 export const testimonials = [
   {
     quote:
@@ -5,6 +7,7 @@ export const testimonials = [
     name: "Tendai M.",
     role: "Project Manager",
     company: "HealthBuild Zimbabwe",
+    projectId: "gweru-hospital",
   },
   {
     quote:
@@ -19,5 +22,6 @@ export const testimonials = [
     name: "Farai D.",
     role: "Operations Lead",
     company: "ZimMining Group",
+    projectId: "mutare-earthworks",
   },
 ];

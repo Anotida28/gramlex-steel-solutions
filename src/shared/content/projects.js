@@ -7,8 +7,8 @@ export const projectCategories = [
 ];
 
 export const projectStats = [
-  { value: "500+", label: "Projects delivered (est.)" },
-  { value: "50,000+", label: "Tons supplied (est.)" },
+  { value: "500+", label: "Projects delivered" },
+  { value: "50,000+", label: "Tons supplied" },
   { value: "15+", label: "Years delivering" },
   { value: "10", label: "Provinces served" },
 ];
@@ -16,6 +16,8 @@ export const projectStats = [
 export const projects = [
   {
     id: "gweru-hospital",
+    // Bar-bending-schedule style tag. DEMO values: confirm with the project file before launch.
+    schedule: { mark: "GWH-01", rows: [{ label: "Ø", value: "Y12–Y25" }, { label: "Shape", value: "00 · 11 · 21" }, { label: "Mass", value: "3,500 t" }] },
     title: "Gweru Central Hospital Expansion",
     category: "construction",
     location: "Gweru, Zimbabwe",
@@ -39,6 +41,8 @@ export const projects = [
   },
   {
     id: "kwekwe-conveyor",
+    // Bar-bending-schedule style tag. DEMO values: confirm with the project file before launch.
+    schedule: { mark: "KWC-04", rows: [{ label: "Ø", value: "Y20–Y32" }, { label: "Shape", value: "00 · 21 · 41" }, { label: "Mass", value: "2,100 t" }] },
     title: "Kwekwe Mining Conveyor Structure",
     category: "steel-hardware",
     location: "Kwekwe, Zimbabwe",
@@ -62,6 +66,8 @@ export const projects = [
   },
   {
     id: "harare-logistics-hub",
+    // Bar-bending-schedule style tag. DEMO values: confirm with the project file before launch.
+    schedule: { mark: "HLH-02", rows: [{ label: "Ø", value: "Y10–Y20" }, { label: "Shape", value: "00 · 11 · 51" }, { label: "Area", value: "40,000 m²" }] },
     title: "Harare Logistics Hub",
     category: "construction",
     location: "Harare, Zimbabwe",
@@ -84,6 +90,8 @@ export const projects = [
   },
   {
     id: "mutare-earthworks",
+    // Bar-bending-schedule style tag. DEMO values: confirm with the project file before launch.
+    schedule: { mark: "MFE-03", rows: [{ label: "Works", value: "Earthworks" }, { label: "Plant", value: "Excavators" }, { label: "Fleet", value: "5 units" }] },
     title: "Mutare Flood Mitigation Earthworks",
     category: "earthmoving",
     location: "Mutare, Zimbabwe",
@@ -106,6 +114,8 @@ export const projects = [
   },
   {
     id: "bulawayo-industrial",
+    // Bar-bending-schedule style tag. DEMO values: confirm with the project file before launch.
+    schedule: { mark: "BIP-05", rows: [{ label: "Ø", value: "Y10–Y16" }, { label: "Mesh", value: "Ref 193–395" }, { label: "Shape", value: "00 · 11" }] },
     title: "Bulawayo Industrial Facility",
     category: "steel-hardware",
     location: "Bulawayo, Zimbabwe",
@@ -128,6 +138,8 @@ export const projects = [
   },
   {
     id: "masvingo-roadworks",
+    // Bar-bending-schedule style tag. DEMO values: confirm with the project file before launch.
+    schedule: { mark: "MRR-06", rows: [{ label: "Works", value: "Road base" }, { label: "Plant", value: "Graders" }, { label: "Length", value: "32 km" }] },
     title: "Masvingo Road Rehabilitation",
     category: "earthmoving",
     location: "Masvingo, Zimbabwe",
