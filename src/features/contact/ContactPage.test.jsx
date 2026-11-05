@@ -108,4 +108,31 @@ describe("ContactPage", () => {
       expect(nameInput).toHaveAttribute("aria-describedby", "fullName-error");
     });
   });
+
+  it("lists an attached bar bending schedule", async () => {
+    const user = userEvent.setup();
+    renderContactPage();
+
+    const schedule = new File(["%PDF-1.4"], "bbs-block-a.pdf", { type: "application/pdf" });
+    await user.upload(screen.getByLabelText(/drawings or bar bending schedule/i), schedule);
+
+    expect(screen.getByRole("list", { name: /attached files/i })).toHaveTextContent("bbs-block-a.pdf");
+  });
+
+  it("rejects attachments that are not PDF or Excel", async () => {
+    const user = userEvent.setup({ applyAccept: false });
+    renderContactPage();
+
+    await user.type(screen.getByLabelText(/full name/i), "Jane Doe");
+    await user.type(screen.getByLabelText(/email/i), "jane@example.com");
+    await user.type(screen.getByLabelText(/project requirements/i), "Rebar for a two-storey clinic in Gweru.");
+    const photo = new File(["jpg"], "site.jpg", { type: "image/jpeg" });
+    await user.upload(screen.getByLabelText(/drawings or bar bending schedule/i), photo);
+    await user.click(screen.getByRole("button", { name: /send|submit/i }));
+
+    await waitFor(() => {
+      expect(screen.getByText(/attach drawings as pdf/i)).toBeInTheDocument();
+    });
+    expect(screen.queryByText(/enquiry received/i)).not.toBeInTheDocument();
+  });
 });

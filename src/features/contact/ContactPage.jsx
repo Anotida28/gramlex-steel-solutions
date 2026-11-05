@@ -10,7 +10,7 @@ import {
   Clock, 
   Send, 
   CheckCircle2,
-  Building2,
+  Paperclip,
   ArrowRight,
 } from "lucide-react";
 import Seo from "@/components/Seo.jsx";
@@ -23,11 +23,33 @@ const {
   hours = {},
 } = COMPANY;
 
+const mapQuery = [address.line1, address.suburb, address.city, address.country]
+  .filter(Boolean)
+  .join(", ");
+
 const emailContacts = [
   { label: "General", value: generalEmail },
   { label: "Sales", value: salesEmail },
   { label: "Projects", value: projectsEmail },
 ].filter(({ value }) => Boolean(value));
+
+// Drawings and bar bending schedules. Quantity surveyors usually send PDFs; schedules
+// often come as spreadsheets, so Excel is accepted too.
+const DRAWING_TYPES = {
+  "application/pdf": "PDF",
+  "application/vnd.ms-excel": "Excel",
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "Excel",
+};
+const DRAWING_ACCEPT = ".pdf,.xls,.xlsx,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+const MAX_DRAWINGS = 5;
+const MAX_DRAWING_MB = 10;
+
+const toFileArray = (value) => (value ? Array.from(value) : []);
+const isAllowedDrawing = (file) =>
+  Boolean(DRAWING_TYPES[file.type]) || /\.(pdf|xlsx?)$/i.test(file.name);
+
+const formatSize = (bytes) =>
+  bytes >= 1024 * 1024 ? `${(bytes / (1024 * 1024)).toFixed(1)} MB` : `${Math.max(1, Math.round(bytes / 1024))} KB`;
 
 const contactSchema = z.object({
   fullName: z.string().min(2, "Please enter your full name."),
@@ -38,6 +60,18 @@ const contactSchema = z.object({
   projectRequirements: z
     .string()
     .min(10, "Please share a few details about your project requirements."),
+  drawings: z
+    .any()
+    .optional()
+    .refine((value) => toFileArray(value).length <= MAX_DRAWINGS, {
+      message: `Attach up to ${MAX_DRAWINGS} files. Combine drawings into one PDF if you have more.`,
+    })
+    .refine((value) => toFileArray(value).every(isAllowedDrawing), {
+      message: "Attach drawings as PDF, and bar bending schedules as PDF or Excel.",
+    })
+    .refine((value) => toFileArray(value).every((file) => file.size <= MAX_DRAWING_MB * 1024 * 1024), {
+      message: `Each file must be ${MAX_DRAWING_MB} MB or smaller.`,
+    }),
 });
 
 const ContactPage = () => {
@@ -48,6 +82,7 @@ const ContactPage = () => {
     formState: { errors, isSubmitting },
     reset,
     setFocus,
+    watch,
   } = useForm({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -57,8 +92,11 @@ const ContactPage = () => {
       phone: "",
       projectLocation: "",
       projectRequirements: "",
+      drawings: undefined,
     },
   });
+
+  const attachedDrawings = toFileArray(watch("drawings"));
 
   // Auto-focus first error field for accessibility
   useEffect(() => {
@@ -70,13 +108,15 @@ const ContactPage = () => {
 
   const onSubmit = async () => {
     // TODO: Wire up to a backend endpoint when available.
-    // Backend developer: implement POST /api/contact with values payload
+    // Backend developer: implement POST /api/contact as multipart/form-data.
+    // values.drawings is a FileList (PDF / Excel, max 5 files, 10 MB each); validate
+    // type and size again on the server, since browser checks can be bypassed.
     setSubmitted(true);
     reset();
   };
 
   return (
-    <div className="bg-background route-motion">
+    <div className="bg-background">
       <Seo
         title="Contact Us"
         description="Get a quote from Gramlex Investments for certified steel supply, construction coordination, or earthmoving equipment. We respond within one business day."
@@ -95,11 +135,11 @@ const ContactPage = () => {
         />
         <div className="container relative z-10">
           <div className="max-w-3xl">
-            <span className="eyebrow" style={{ color: "hsl(var(--gold))" }}>
-              Get in Touch
+            <span className="eyebrow eyebrow--on-dark">
+              Contact
             </span>
             <h1 className="mt-6 text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Tell Us What You Need. We'll Make It Happen.
+              Send your drawings. We'll price them within one business day.
             </h1>
             <p className="mt-6 text-xl text-steel-300 leading-relaxed max-w-2xl">
               Share your scope, timeline, or drawings — even a rough brief will do.
@@ -119,9 +159,9 @@ const ContactPage = () => {
             
             {/* FORM SECTION */}
             <div>
-              <div className="bg-white rounded-2xl border border-border shadow-sm p-6 md:p-10 lg:p-12 hover:shadow-lg transition-shadow">
+              <div className="bg-white rounded-md border border-border shadow-sm p-6 md:p-10 lg:p-12 hover:shadow-lg transition-shadow">
                 <div className="mb-8">
-                  <h2 className="text-2xl font-bold text-navy mb-2">Tell Us About Your Project</h2>
+                  <h2 className="text-2xl font-bold text-navy mb-2">Tell us about your project</h2>
                   <p className="text-steel-500">
                     We respond within one business day. The more detail you share — tonnage, drawings, timelines — the faster we can price it.
                   </p>
@@ -129,7 +169,7 @@ const ContactPage = () => {
 
                 {submitted && (
                   <div 
-                    className="mb-8 flex items-start gap-4 p-6 rounded-xl bg-primary/5 border border-primary/20 animate-in" 
+                    className="mb-8 flex items-start gap-4 p-6 rounded-md bg-primary/5 border border-primary/20 animate-in" 
                     role="status"
                     aria-live="polite"
                   >
@@ -257,6 +297,45 @@ const ContactPage = () => {
                     )}
                   </div>
 
+                  {/* Drawings / bar bending schedule */}
+                  <div className="form-group">
+                    <label className="form-label" htmlFor="drawings">
+                      Drawings or bar bending schedule <span className="form-optional">(optional)</span>
+                    </label>
+                    <div className="form-file" data-invalid={Boolean(errors.drawings) || undefined}>
+                      <Paperclip className="h-5 w-5 flex-shrink-0 text-steel-500" aria-hidden="true" />
+                      <input
+                        id="drawings"
+                        type="file"
+                        multiple
+                        accept={DRAWING_ACCEPT}
+                        className="form-file-input"
+                        aria-invalid={Boolean(errors.drawings)}
+                        aria-describedby={errors.drawings ? "drawings-hint drawings-error" : "drawings-hint"}
+                        {...register("drawings")}
+                      />
+                    </div>
+                    <p id="drawings-hint" className="form-hint">
+                      PDF or Excel, up to {MAX_DRAWINGS} files, {MAX_DRAWING_MB} MB each. A
+                      schedule gets you a firm price; without one we&apos;ll price from your description.
+                    </p>
+                    {attachedDrawings.length > 0 && !errors.drawings && (
+                      <ul className="form-file-list" aria-label="Attached files">
+                        {attachedDrawings.map((file) => (
+                          <li key={`${file.name}-${file.size}`}>
+                            <span>{file.name}</span>
+                            <span>{formatSize(file.size)}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    {errors.drawings && (
+                      <p id="drawings-error" className="form-error" role="alert">
+                        {errors.drawings.message}
+                      </p>
+                    )}
+                  </div>
+
                   <button 
                     type="submit" 
                     className="btn btn-primary btn-lg w-full" 
@@ -266,7 +345,7 @@ const ContactPage = () => {
                       "Sending..."
                     ) : (
                       <>
-                        Send Enquiry
+                        Send enquiry
                         <Send className="h-4 w-4" />
                       </>
                     )}
@@ -277,14 +356,14 @@ const ContactPage = () => {
 
             {/* CONTACT INFO SIDEBAR */}
             <div className="space-y-8">
-              {/* Contact Details Card */}
-              <div className="bg-navy rounded-2xl p-8 text-white">
-                <h3 className="text-xl font-bold mb-8 text-gold">Contact Details</h3>
+              {/* Contact details Card */}
+              <div className="bg-navy rounded-md p-8 text-white">
+                <h3 className="text-xl font-bold mb-8 text-brand">Contact details</h3>
                 <div className="space-y-7">
                   {phones.length > 0 && (
                     <div className="flex items-start gap-4">
-                      <div className="h-12 w-12 rounded-xl bg-navy-lighter flex items-center justify-center flex-shrink-0">
-                        <Phone className="h-5 w-5 text-gold" />
+                      <div className="h-12 w-12 rounded-md bg-navy-lighter flex items-center justify-center flex-shrink-0">
+                        <Phone className="h-5 w-5 text-brand" />
                       </div>
                       <div>
                         <p className="font-semibold mb-1">Phone</p>
@@ -292,7 +371,7 @@ const ContactPage = () => {
                           <a 
                             key={number}
                             href={`tel:${number.replace(/\s/g, '')}`}
-                            className="block text-steel-300 hover:text-gold transition-colors"
+                            className="block text-steel-300 hover:text-brand transition-colors"
                           >
                             {number}
                           </a>
@@ -303,8 +382,8 @@ const ContactPage = () => {
 
                   {emailContacts.length > 0 && (
                     <div className="flex items-start gap-4">
-                      <div className="h-12 w-12 rounded-xl bg-navy-lighter flex items-center justify-center flex-shrink-0">
-                        <Mail className="h-5 w-5 text-gold" />
+                      <div className="h-12 w-12 rounded-md bg-navy-lighter flex items-center justify-center flex-shrink-0">
+                        <Mail className="h-5 w-5 text-brand" />
                       </div>
                       <div>
                         <p className="font-semibold mb-1">Email</p>
@@ -312,7 +391,7 @@ const ContactPage = () => {
                           <a 
                             key={value}
                             href={`mailto:${value}`}
-                            className="block text-steel-300 hover:text-gold transition-colors text-sm"
+                            className="block text-steel-300 hover:text-brand transition-colors text-sm"
                           >
                             <span className="text-steel-400">{label}:</span> {value}
                           </a>
@@ -323,11 +402,11 @@ const ContactPage = () => {
 
                   {(address.line1 || address.city) && (
                     <div className="flex items-start gap-4">
-                      <div className="h-12 w-12 rounded-xl bg-navy-lighter flex items-center justify-center flex-shrink-0">
-                        <MapPin className="h-5 w-5 text-gold" />
+                      <div className="h-12 w-12 rounded-md bg-navy-lighter flex items-center justify-center flex-shrink-0">
+                        <MapPin className="h-5 w-5 text-brand" />
                       </div>
                       <div>
-                        <p className="font-semibold mb-1">Head Office</p>
+                        <p className="font-semibold mb-1">Head office</p>
                         {[address.line1, address.suburb, address.city, address.country]
                           .filter(Boolean)
                           .map((part) => (
@@ -341,7 +420,7 @@ const ContactPage = () => {
 
               {/* WhatsApp Card */}
               {whatsapp?.link && (
-                <div className="bg-primary rounded-2xl p-8 text-white">
+                <div className="bg-primary rounded-md p-8 text-white">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="h-12 w-12 rounded-full bg-white/20 flex items-center justify-center">
                       <MessageCircle className="h-6 w-6" />
@@ -363,14 +442,14 @@ const ContactPage = () => {
                 </div>
               )}
 
-              {/* Operating Hours Card */}
+              {/* Operating hours Card */}
               {(hours.weekdays || hours.saturday) && (
-                <div className="bg-white rounded-2xl border border-border p-8">
+                <div className="bg-white rounded-md border border-border p-8">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="h-12 w-12 rounded-xl bg-gold/10 flex items-center justify-center">
-                      <Clock className="h-5 w-5 text-gold-dark" />
+                    <div className="h-12 w-12 rounded-md bg-brand/10 flex items-center justify-center">
+                      <Clock className="h-5 w-5 text-brand-dark" />
                     </div>
-                    <h3 className="text-lg font-bold text-navy">Operating Hours</h3>
+                    <h3 className="text-lg font-bold text-navy">Operating hours</h3>
                   </div>
                   <div className="space-y-3 text-sm">
                     {hours.weekdays && (
@@ -405,7 +484,7 @@ const ContactPage = () => {
         <div className="container">
           <div className="section-header">
             <span className="eyebrow">Find Us</span>
-            <h2 className="section-title">Visit Our Head Office</h2>
+            <h2 className="section-title">Visit our head office</h2>
             <p className="section-subtitle">
               We welcome site visits, procurement meetings, and urgent walk-in requests.
               Our team is on site Monday to Friday, 08:00 – 18:00.
@@ -413,16 +492,17 @@ const ContactPage = () => {
           </div>
 
           <div className="grid gap-6 lg:gap-10 lg:grid-cols-3">
-            <div className="lg:col-span-2 bg-steel-200 rounded-2xl h-80 flex items-center justify-center">
-              <div className="text-center p-8">
-                <Building2 className="h-16 w-16 text-steel-400 mx-auto mb-4" />
-                <p className="text-steel-500 font-medium">Map Integration Coming Soon</p>
-                <p className="text-sm text-steel-400 mt-2">
-                  {[address.line1, address.city, address.country].filter(Boolean).join(", ")}
-                </p>
-              </div>
+            <div className="lg:col-span-2 overflow-hidden rounded-md bg-steel-200 h-80 lg:h-full lg:min-h-80">
+              <iframe
+                title={`Map showing Gramlex head office at ${mapQuery}`}
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(mapQuery)}&z=15&output=embed`}
+                className="h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
             </div>
-            <div className="bg-navy rounded-2xl p-8 text-white flex flex-col justify-center">
+            <div className="bg-navy rounded-md p-8 text-white flex flex-col justify-center">
               <h3 className="text-2xl font-bold mb-4">Gramlex Investments</h3>
               <div className="space-y-3 text-steel-300">
                 {[address.line1, address.suburb, address.city, address.country]
@@ -431,8 +511,17 @@ const ContactPage = () => {
                     <p key={part}>{part}</p>
                   ))}
               </div>
+              <a
+                href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(mapQuery)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 font-semibold text-brand hover:underline"
+              >
+                Get directions
+                <span className="sr-only"> (opens Google Maps in a new tab)</span>
+              </a>
               <div className="mt-8 pt-6 border-t border-navy-lighter">
-                <p className="text-gold font-semibold mb-2">Opening Hours</p>
+                <p className="text-brand font-semibold mb-2">Opening hours</p>
                 <p className="text-steel-300 text-sm">{hours.weekdays || "Monday - Friday: 8am - 5pm"}</p>
               </div>
             </div>

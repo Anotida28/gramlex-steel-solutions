@@ -37,7 +37,7 @@ describe("App Routes", () => {
 
   it("renders contact page at /contact", () => {
     renderWithRouter(["/contact"]);
-    expect(screen.getByRole("heading", { level: 1, name: /tell us what you need/i })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1, name: /send your drawings/i })).toBeInTheDocument();
   });
 
   it("renders 404 page for unknown routes", () => {

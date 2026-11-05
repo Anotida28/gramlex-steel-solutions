@@ -28,7 +28,8 @@ describe("Accessibility", () => {
 
   it("ContactPage has no accessibility violations", async () => {
     const { container } = renderWithProviders(ContactPage);
-    const results = await axe(container);
+    // jsdom cannot host the Google Maps iframe, so axe must not try to scan inside it.
+    const results = await axe(container, { iframes: false });
     expect(results).toHaveNoViolations();
   });
 
