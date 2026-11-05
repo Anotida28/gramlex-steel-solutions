@@ -198,7 +198,7 @@ const HomePage = () => {
                 </table>
               </div>
               <p className="spec-table-note">
-                {meshStock} Shape codes per BS 8666. Lead times are from schedule approval.
+                {meshStock} Shape codes per SANS 282; other shapes (code 99) to your sketch. Lead times are from schedule approval.
               </p>
             </AnimatedSection>
           </div>

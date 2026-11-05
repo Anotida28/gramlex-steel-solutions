@@ -17,7 +17,7 @@ export const projects = [
   {
     id: "gweru-hospital",
     // Bar-bending-schedule style tag. DEMO values: confirm with the project file before launch.
-    schedule: { mark: "GWH-01", rows: [{ label: "Ø", value: "Y12–Y25" }, { label: "Shape", value: "00 · 11 · 21" }, { label: "Mass", value: "3,500 t" }] },
+    schedule: { mark: "GWH-01", rows: [{ label: "Ø", value: "Y12–Y25" }, { label: "Shape", value: "20 · 37 · 60" }, { label: "Mass", value: "3,500 t" }] },
     title: "Gweru Central Hospital Expansion",
     category: "construction",
     location: "Gweru, Zimbabwe",
@@ -42,7 +42,7 @@ export const projects = [
   {
     id: "kwekwe-conveyor",
     // Bar-bending-schedule style tag. DEMO values: confirm with the project file before launch.
-    schedule: { mark: "KWC-04", rows: [{ label: "Ø", value: "Y20–Y32" }, { label: "Shape", value: "00 · 21 · 41" }, { label: "Mass", value: "2,100 t" }] },
+    schedule: { mark: "KWC-04", rows: [{ label: "Ø", value: "Y20–Y32" }, { label: "Shape", value: "20 · 37 · 99" }, { label: "Mass", value: "2,100 t" }] },
     title: "Kwekwe Mining Conveyor Structure",
     category: "steel-hardware",
     location: "Kwekwe, Zimbabwe",
@@ -67,7 +67,7 @@ export const projects = [
   {
     id: "harare-logistics-hub",
     // Bar-bending-schedule style tag. DEMO values: confirm with the project file before launch.
-    schedule: { mark: "HLH-02", rows: [{ label: "Ø", value: "Y10–Y20" }, { label: "Shape", value: "00 · 11 · 51" }, { label: "Area", value: "40,000 m²" }] },
+    schedule: { mark: "HLH-02", rows: [{ label: "Ø", value: "Y10–Y20" }, { label: "Shape", value: "20 · 37 · 60" }, { label: "Area", value: "40,000 m²" }] },
     title: "Harare Logistics Hub",
     category: "construction",
     location: "Harare, Zimbabwe",
@@ -115,7 +115,7 @@ export const projects = [
   {
     id: "bulawayo-industrial",
     // Bar-bending-schedule style tag. DEMO values: confirm with the project file before launch.
-    schedule: { mark: "BIP-05", rows: [{ label: "Ø", value: "Y10–Y16" }, { label: "Mesh", value: "Ref 193–395" }, { label: "Shape", value: "00 · 11" }] },
+    schedule: { mark: "BIP-05", rows: [{ label: "Ø", value: "Y10–Y16" }, { label: "Mesh", value: "Ref 193–395" }, { label: "Shape", value: "20 · 37" }] },
     title: "Bulawayo Industrial Facility",
     category: "steel-hardware",
     location: "Bulawayo, Zimbabwe",
