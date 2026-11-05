@@ -27,14 +27,15 @@ const config = {
           light: "hsl(var(--navy-light))",
           lighter: "hsl(var(--navy-lighter))",
         },
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          dark: "hsl(var(--gold-dark))",
-          light: "hsl(var(--gold-light))",
+        brand: {
+          DEFAULT: "hsl(var(--brand))",
+          dark: "hsl(var(--brand-dark))",
+          light: "hsl(var(--brand-light))",
         },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          dark: "hsl(var(--primary-dark))",
           glow: "hsl(var(--primary-glow))",
         },
         secondary: {
@@ -99,14 +100,9 @@ const config = {
         sm: "var(--radius-sm)",
       },
       fontFamily: {
-        sans: [
-          "Source Sans 3",
-          "Helvetica Neue",
-          "Arial",
-          "ui-sans-serif",
-          "system-ui",
-          "-apple-system",
-        ],
+        sans: ["Barlow", "Helvetica Neue", "Arial", "sans-serif"],
+        display: ["Barlow Condensed", "Arial Narrow", "Helvetica Neue", "sans-serif"],
+        mono: ["IBM Plex Mono", "ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
       backgroundImage: {
         "gradient-primary": "var(--gradient-primary)",
